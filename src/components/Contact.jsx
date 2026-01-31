@@ -19,12 +19,14 @@ const Contact = () => {
     resetStatus();
   };
 
- const onSubmit = (e) => {
-  e.preventDefault();
-  handleSubmit(formData); 
-  setFormData({ name: '', email: '', subject: '', message: '' }); 
-};
-
+  const onSubmit = async (e) => {
+    e.preventDefault();
+    const result = await handleSubmit(formData);
+    
+    if (result.success) {
+      setFormData({ name: '', email: '', subject: '', message: '' });
+    }
+  };
 
   const contactLinks = [
     {
@@ -121,8 +123,6 @@ const Contact = () => {
           <div className="lg:col-span-3">
             <form
               name="contact"
-              method="POST"
-              data-netlify="true"
               netlify-honeypot="bot-field"
               onSubmit={onSubmit}
               className="space-y-4 sm:space-y-6"
