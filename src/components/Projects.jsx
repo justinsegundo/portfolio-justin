@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import ImageLightbox from './ImageLightBox';
+import ImageLightbox from './ImageLightbox';
 
 const Projects = () => {
   const [activeTab, setActiveTab] = useState('featured');
