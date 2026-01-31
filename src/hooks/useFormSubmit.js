@@ -1,43 +1,55 @@
 import { useState } from 'react';
 
 export const useFormSubmit = () => {
-  const [status, setStatus] = useState({ type: '', message: '' });
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [status, setStatus] = useState({
+    type: '',
+    message: '',
+  });
 
-  const handleSubmit = async (formData, endpoint = '/api/contact') => {
-    setIsSubmitting(true);
+  const resetStatus = () => {
     setStatus({ type: '', message: '' });
+  };
+
+  const handleSubmit = async (formData) => {
+    setIsSubmitting(true);
 
     try {
-      const response = await fetch(endpoint, {
+      const response = await fetch('/', {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(formData),
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: new URLSearchParams({
+          'form-name': 'contact',
+          ...formData,
+        }).toString(),
       });
 
-      if (response.ok) {
-        setStatus({
-          type: 'success',
-          message: 'Message sent successfully! I\'ll get back to you soon.',
-        });
-        return { success: true };
-      } else {
-        throw new Error('Failed to send message');
+      if (!response.ok) {
+        throw new Error('Form submission failed');
       }
+
+      setStatus({
+        type: 'success',
+        message: 'Message sent successfully!',
+      });
+
+      return { success: true };
     } catch (error) {
       setStatus({
         type: 'error',
-        message: 'Failed to send message. Please try again or email me directly.',
+        message: 'Something went wrong. Please try again.',
       });
+
       return { success: false };
     } finally {
       setIsSubmitting(false);
     }
   };
 
-  const resetStatus = () => setStatus({ type: '', message: '' });
-
-  return { status, isSubmitting, handleSubmit, resetStatus };
+  return {
+    isSubmitting,
+    status,
+    handleSubmit,
+    resetStatus,
+  };
 };

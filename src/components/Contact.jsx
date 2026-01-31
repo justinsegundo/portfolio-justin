@@ -19,30 +19,11 @@ const Contact = () => {
     resetStatus();
   };
 
-  const onSubmit = async (e) => {
-    e.preventDefault();
-    setIsSubmitting(true);
-
-    const form = e.target;
-    const formData = new FormData(form);
-
-    try {
-      await fetch('/', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/x-www-form-urlencoded',
-        },
-        body: new URLSearchParams(formData).toString(),
-      });
-
-      setStatus({ type: 'success', message: 'Message sent successfully!' });
-      setFormData({ name: '', email: '', subject: '', message: '' });
-    } catch (error) {
-      setStatus({ type: 'error', message: 'Something went wrong. Please try again.' });
-    } finally {
-      setIsSubmitting(false);
-    }
-  };
+ const onSubmit = (e) => {
+  e.preventDefault();
+  handleSubmit(formData); 
+  setFormData({ name: '', email: '', subject: '', message: '' }); 
+};
 
 
   const contactLinks = [
