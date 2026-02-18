@@ -102,7 +102,7 @@ const Projects = () => {
                         className="w-full h-auto rounded-lg hover:scale-[1.02] transition-transform duration-500 object-cover aspect-video"
                       />
                     </div>
-                    <div className="bg-white dark:bg-slate-800 border-2 border-gray-200 dark:border-slate-700 p-5 sm:p-6 md:p-8">
+                    <div className="bg-white dark:bg-slate-800 border-2 border-gray-200 dark:border-slate-700 p-5 sm:p-6 md:p-8 hover:border-gray-400 dark:hover:border-slate-500 transition-colors duration-300">
                       <h3 className="text-lg sm:text-xl font-bold text-gray-900 dark:text-slate-100 mb-2 sm:mb-3 flex items-center gap-2">
                         {project.title}
                       </h3>
@@ -138,7 +138,7 @@ const Projects = () => {
                 {additionalProjects.map((project) => (
                   <div
                     key={project.id}
-                    className="bg-white dark:bg-slate-800 border-2 border-gray-200 dark:border-slate-700 p-5 sm:p-6 md:p-8 animate-fadeInUp"
+                   className="bg-white dark:bg-slate-800 border-2 border-gray-200 dark:border-slate-700 p-5 sm:p-6 md:p-8 animate-fadeInUp hover:border-gray-400 dark:hover:border-slate-500 transition-colors duration-300"
                   >
                     <div className="flex items-start gap-3 sm:gap-4 mb-4 sm:mb-6">
                       <div className="w-10 h-10 sm:w-12 sm:h-12 bg-gray-900 dark:bg-slate-100 flex items-center justify-center flex-shrink-0">

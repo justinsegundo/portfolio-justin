@@ -12,7 +12,7 @@ const About = () => {
         </svg>
       ),
       title: 'Front-end Development',
-      description: 'React, jQuery, Responsive UI',
+      description: 'React, JavaScript, jQuery, Responsive UI',
     },
     {
       icon: (
@@ -21,7 +21,7 @@ const About = () => {
         </svg>
       ),
       title: 'Backend & Database',
-      description: 'PHP, MySQL, Data Optimization',
+      description: 'Laravel, PHP, Java, MySQL',
     },
     {
       icon: (
@@ -77,10 +77,10 @@ const About = () => {
           <div className="grid md:grid-cols-3 gap-8 sm:gap-10 md:gap-12 mb-12 sm:mb-16 md:mb-20">
             <div className="md:col-span-2 space-y-6 sm:space-y-8 animate-fadeInUp">
               <p className="text-sm sm:text-base text-gray-600 dark:text-slate-300 leading-relaxed">
-                I'm a recent graduate passionate about building real-world web applications. During my time at TinkerPro POS, I contributed directly to production features used daily by live customers, improving UI components, optimizing workflows, and helping ship reliable updates.
+                I'm a fresh graduate from CTU - Carmen Campus who builds things that solve real problems starting with my own community. Whether it's a water supply monitor for my neighborhood or a POS system for a local store, I care about software that actually gets used
               </p>
               <p className="text-sm sm:text-base text-gray-600 dark:text-slate-300 leading-relaxed">
-                My work involved both front-end and back-end contributions for POS software, building responsive interfaces, enhancing theme customization, writing API endpoints, and developing batch import tools. I learned to understand the full flow of a production system, from UI interactions to backend logic and database operations.
+                At TinkerPro POS I got my first taste of what production really means code that breaks for real users, deadlines that matter, and seniors who push you to think before you ship. That experience changed how I approach every project
               </p>
 
               <div className="grid md:grid-cols-2 gap-5 sm:gap-6 mt-8 sm:mt-10">
@@ -93,7 +93,7 @@ const About = () => {
                   </h3>
                   <button
                     onClick={() => setIsModalOpen(true)}
-                    className="flex-1 w-full group relative overflow-hidden bg-white dark:bg-slate-800 border-2 border-gray-200 dark:border-slate-700 p-4 sm:p-5 md:p-6 text-left hover:border-gray-300 dark:hover:border-slate-600 transition-colors"
+                  className="flex-1 w-full group relative overflow-hidden bg-white dark:bg-slate-800 border-2 border-gray-200 dark:border-slate-700 p-4 sm:p-5 md:p-6 text-left hover:border-gray-400 dark:hover:border-slate-500 transition-colors duration-300"
                   >
                     <div className="flex items-center justify-between mb-2 sm:mb-3">
                       <div className="flex items-center gap-2 min-w-0 flex-1">
@@ -129,7 +129,7 @@ const About = () => {
                     </svg>
                     Education
                   </h3>
-                  <div className="flex-1 bg-white dark:bg-slate-800 p-4 sm:p-5 border-2 border-gray-200 dark:border-slate-700 hover:border-gray-300 dark:hover:border-slate-600 transition-colors duration-300">
+                  <div className="flex-1 bg-white dark:bg-slate-800 p-4 sm:p-5 border-2 border-gray-200 dark:border-slate-700 hover:border-gray-400 dark:hover:border-slate-500 transition-colors duration-300">
                     <h4 className="font-semibold text-gray-900 dark:text-slate-100 text-xs sm:text-sm mb-2">
                       CTU - Carmen Campus
                     </h4>

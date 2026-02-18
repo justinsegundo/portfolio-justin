@@ -1,9 +1,14 @@
 const Skills = () => {
   const frontendSkills = [
     {
-      name: 'HTML & CSS',
+      name: 'HTML',
       percentage: 90,
       icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg',
+    },
+    {
+      name: 'CSS',
+      percentage: 88,
+      icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg',
     },
     {
       name: 'JavaScript',
@@ -25,6 +30,11 @@ const Skills = () => {
       percentage: 85,
       icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-original.svg',
     },
+    {
+      name: 'WordPress',
+      percentage: 70,
+      icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/wordpress/wordpress-plain.svg',
+    },
   ];
 
   const backendSkills = [
@@ -32,6 +42,16 @@ const Skills = () => {
       name: 'PHP',
       percentage: 80,
       icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/php/php-original.svg',
+    },
+    {
+      name: 'Laravel',
+      percentage: 70,
+      icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/laravel/laravel-original.svg',
+    },
+    {
+      name: 'Java',
+      percentage: 70,
+      icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg',
     },
     {
       name: 'MySQL',
@@ -60,7 +80,7 @@ const Skills = () => {
   ];
 
   const SkillCard = ({ title, skills, icon }) => (
-    <div className="bg-white dark:bg-slate-800 border-2 border-gray-200 dark:border-slate-700 p-5 sm:p-6 md:p-8">
+    <div className="bg-white dark:bg-slate-800 border-2 border-gray-200 dark:border-slate-700 p-5 sm:p-6 md:p-8 hover:border-gray-400 dark:hover:border-slate-500 transition-colors duration-300">
       <div className="flex items-center gap-2 sm:gap-3 mb-6 sm:mb-8 pb-3 sm:pb-4 border-b-2 border-gray-900 dark:border-slate-100">
         {icon}
         <h3 className="text-lg sm:text-xl font-bold text-gray-900 dark:text-slate-100">{title}</h3>
