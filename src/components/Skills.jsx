@@ -1,163 +1,303 @@
-const Skills = () => {
-  const frontendSkills = [
-    {
-      name: 'HTML',
-      percentage: 90,
-      icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg',
-    },
-    {
-      name: 'CSS',
-      percentage: 88,
-      icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg',
-    },
-    {
-      name: 'JavaScript',
-      percentage: 85,
-      icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg',
-    },
-    {
-      name: 'React.js',
-      percentage: 70,
-      icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg',
-    },
-    {
-      name: 'jQuery',
-      percentage: 80,
-      icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/jquery/jquery-original.svg',
-    },
-    {
-      name: 'Tailwind CSS',
-      percentage: 85,
-      icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-original.svg',
-    },
-    {
-      name: 'WordPress',
-      percentage: 70,
-      icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/wordpress/wordpress-plain.svg',
-    },
-  ];
+import { motion } from "framer-motion";
+import "../styles/skills.css";
 
-  const backendSkills = [
-    {
-      name: 'PHP',
-      percentage: 80,
-      icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/php/php-original.svg',
-    },
-    {
-      name: 'Laravel',
-      percentage: 70,
-      icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/laravel/laravel-original.svg',
-    },
-    {
-      name: 'Java',
-      percentage: 70,
-      icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg',
-    },
-    {
-      name: 'MySQL',
-      percentage: 75,
-      icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg',
-    },
-    {
-      name: 'REST APIs',
-      percentage: 70,
-      icon: (
-        <svg className="w-5 h-5 sm:w-7 sm:h-7 text-gray-900 dark:text-slate-100" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M8 9l3 3-3 3m5 0h3M5 20h14a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
-        </svg>
-      ),
-    },
-    {
-      name: 'Git & Version Control',
-      percentage: 80,
-      icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg',
-    },
-    {
-      name: 'VS Code & DevTools',
-      percentage: 85,
-      icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg',
-    },
-  ];
+const CDN = "https://cdn.jsdelivr.net/gh/devicons/devicon/icons";
 
-  const SkillCard = ({ title, skills, icon }) => (
-    <div className="bg-white dark:bg-slate-800 border-2 border-gray-200 dark:border-slate-700 p-5 sm:p-6 md:p-8 hover:border-gray-400 dark:hover:border-slate-500 transition-colors duration-300">
-      <div className="flex items-center gap-2 sm:gap-3 mb-6 sm:mb-8 pb-3 sm:pb-4 border-b-2 border-gray-900 dark:border-slate-100">
-        {icon}
-        <h3 className="text-lg sm:text-xl font-bold text-gray-900 dark:text-slate-100">{title}</h3>
-      </div>
+const iconRestApi = (
+  <svg
+    width="18"
+    height="18"
+    fill="none"
+    stroke="currentColor"
+    viewBox="0 0 24 24"
+    strokeWidth="1.5"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+  >
+    <path d="M8 9l3 3-3 3m5 0h3M5 20h14a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+  </svg>
+);
 
-      <div className="space-y-4 sm:space-y-5">
-        {skills.map((skill, index) => (
-          <div key={index} className="group">
-            <div className="flex items-center gap-3 sm:gap-4 mb-2 sm:mb-3">
-              <div className="w-8 h-8 sm:w-10 sm:h-10 bg-gray-100 dark:bg-slate-700 flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform">
-                {typeof skill.icon === 'string' ? (
-                  <img src={skill.icon} alt={skill.name} className="w-5 h-5 sm:w-7 sm:h-7" />
-                ) : (
-                  skill.icon
-                )}
-              </div>
-              <div className="flex-1 min-w-0">
-                <div className="flex items-center justify-between mb-1">
-                  <span className="text-xs sm:text-sm font-semibold text-gray-900 dark:text-slate-100 truncate">
-                    {skill.name}
-                  </span>
-                  <span className="text-xs font-medium text-gray-500 dark:text-slate-400 ml-2 flex-shrink-0">
-                    {skill.percentage}%
-                  </span>
-                </div>
-                <div className="h-1.5 bg-gray-200 dark:bg-slate-700 overflow-hidden rounded-full">
-                  <div
-                    className="h-full bg-gray-900 dark:bg-slate-300 transition-all duration-500 rounded-full"
-                    style={{ width: `${skill.percentage}%` }}
-                  ></div>
-                </div>
-              </div>
-            </div>
-          </div>
-        ))}
-      </div>
+const iconMvc = (
+  <svg
+    width="18"
+    height="18"
+    fill="none"
+    stroke="currentColor"
+    viewBox="0 0 24 24"
+    strokeWidth="1.5"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+  >
+    <path d="M4 5a1 1 0 011-1h4a1 1 0 011 1v4a1 1 0 01-1 1H5a1 1 0 01-1-1V5zM14 5a1 1 0 011-1h4a1 1 0 011 1v4a1 1 0 01-1 1h-4a1 1 0 01-1-1V5zM4 15a1 1 0 011-1h4a1 1 0 011 1v4a1 1 0 01-1 1H5a1 1 0 01-1-1v-4zM14 15a1 1 0 011-1h4a1 1 0 011 1v4a1 1 0 01-1 1h-4a1 1 0 01-1-1v-4z" />
+  </svg>
+);
+
+const iconAuth = (
+  <svg
+    width="18"
+    height="18"
+    fill="none"
+    stroke="currentColor"
+    viewBox="0 0 24 24"
+    strokeWidth="1.5"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+  >
+    <path d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+  </svg>
+);
+
+const iconCloudPanel = (
+  <svg
+    width="18"
+    height="18"
+    fill="none"
+    stroke="currentColor"
+    viewBox="0 0 24 24"
+    strokeWidth="1.5"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+  >
+    <path d="M5 12h14M5 12a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2M5 12a2 2 0 00-2 2v4a2 2 0 002 2h14a2 2 0 002-2v-4a2 2 0 00-2-2" />
+  </svg>
+);
+
+const iconCron = (
+  <svg
+    width="18"
+    height="18"
+    fill="none"
+    stroke="currentColor"
+    viewBox="0 0 24 24"
+    strokeWidth="1.5"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+  >
+    <path d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+  </svg>
+);
+
+const iconSmtp = (
+  <svg
+    width="18"
+    height="18"
+    fill="none"
+    stroke="currentColor"
+    viewBox="0 0 24 24"
+    strokeWidth="1.5"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+  >
+    <path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+  </svg>
+);
+
+const GROUPS = [
+  {
+    id: "frontend",
+    label: "Frontend",
+    color: "rgba(96,165,250,0.7)",
+    glow: "rgba(96,165,250,0.12)",
+    skills: [
+      { name: "React", img: `${CDN}/react/react-original.svg` },
+      { name: "TypeScript", img: `${CDN}/typescript/typescript-original.svg` },
+      { name: "JavaScript", img: `${CDN}/javascript/javascript-original.svg` },
+      {
+        name: "Tailwind",
+        img: `${CDN}/tailwindcss/tailwindcss-original.svg`,
+      },
+      {
+        name: "Bootstrap",
+        img: `${CDN}/bootstrap/bootstrap-original.svg`,
+      },
+      { name: "HTML", img: `${CDN}/html5/html5-original.svg` },
+      { name: "CSS", img: `${CDN}/css3/css3-original.svg` },
+      { name: "jQuery", img: `${CDN}/jquery/jquery-original.svg` },
+    ],
+  },
+  {
+    id: "backend",
+    label: "Backend & API",
+    color: "rgba(167,139,250,0.8)",
+    glow: "rgba(124,92,252,0.12)",
+    skills: [
+      { name: "PHP", img: `${CDN}/php/php-original.svg` },
+      { name: "Laravel", img: `${CDN}/laravel/laravel-original.svg` },
+      { name: "REST API", svg: iconRestApi },
+      { name: "Java", img: `${CDN}/java/java-original.svg` },
+      { name: "Auth / JWT", svg: iconAuth },
+      { name: "MVC Pattern", svg: iconMvc },
+    ],
+  },
+  {
+    id: "server",
+    label: "Server & Data",
+    color: "rgba(52,211,153,0.75)",
+    glow: "rgba(52,211,153,0.1)",
+    skills: [
+      { name: "MySQL", img: `${CDN}/mysql/mysql-original.svg` },
+      { name: "Ubuntu Linux", img: `${CDN}/ubuntu/ubuntu-original.svg` },
+      { name: "Nginx", img: `${CDN}/nginx/nginx-original.svg` },
+      { name: "Apache", img: `${CDN}/apache/apache-original.svg` },
+      { name: "CloudPanel", svg: iconCloudPanel },
+      { name: "Cron Jobs", svg: iconCron },
+      { name: "SMTP", svg: iconSmtp },
+    ],
+  },
+  {
+    id: "tools",
+    label: "Tools & Workflow",
+    color: "rgba(251,191,36,0.7)",
+    glow: "rgba(251,191,36,0.08)",
+    skills: [
+      { name: "Git", img: `${CDN}/git/git-original.svg` },
+      { name: "VS Code", img: `${CDN}/vscode/vscode-original.svg` },
+      { name: "Postman", img: `${CDN}/postman/postman-original.svg` },
+      { name: "FileZilla", img: `${CDN}/filezilla/filezilla-original.svg` },
+      { name: "Firebase", img: `${CDN}/firebase/firebase-original.svg` },
+    ],
+  },
+];
+
+const stagger = {
+  hidden: {},
+  visible: { transition: { staggerChildren: 0.07, delayChildren: 0.1 } },
+};
+
+const fadeUp = {
+  hidden: { opacity: 0, y: 16 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.5, ease: [0.22, 1, 0.36, 1] },
+  },
+};
+
+const SkillChip = ({ skill, color }) => (
+  <div className="sk-chip">
+    <span className="sk-chip-icon">
+      {skill.img ? (
+        <img
+          src={skill.img}
+          alt={skill.name}
+          width="18"
+          height="18"
+          loading="lazy"
+        />
+      ) : (
+        <span className="sk-chip-svg" style={{ color }}>
+          {skill.svg}
+        </span>
+      )}
+    </span>
+    <span className="sk-chip-name">{skill.name}</span>
+  </div>
+);
+
+const GroupCard = ({ group }) => (
+  <motion.div
+    className="sk-group"
+    variants={fadeUp}
+    style={{ "--group-glow": group.glow, "--group-color": group.color }}
+  >
+    <div className="sk-group-header">
+      <span className="sk-group-label">{group.label}</span>
     </div>
-  );
+    <div className="sk-chips">
+      {group.skills.map((skill) => (
+        <SkillChip key={skill.name} skill={skill} color={group.color} />
+      ))}
+    </div>
+  </motion.div>
+);
 
+const Skills = () => {
   return (
-    <section id="tech" className="pt-24 pb-12 sm:pt-28 sm:pb-16 md:pt-32 md:pb-20 px-4 sm:px-6 bg-white dark:bg-slate-900">
-      <div className="max-w-6xl mx-auto">
-        <div className="mb-10 sm:mb-12 md:mb-16 animate-fadeInUp">
-          <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 dark:text-slate-100 mb-2 tracking-tight">
-            Skills & Expertise
+    <section id="skills" className="sk-section">
+      <div className="sk-bg-glow" />
+
+      <motion.div
+        className="sk-bounded"
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
+      >
+        <div className="sk-heading-block">
+          <div className="sk-eyebrow">
+            <span className="sk-eyebrow-dot" />
+            Tech Stack
+          </div>
+          <h2 className="sk-heading">
+            SKILLS &amp; <span className="sk-heading-outline">EXPERTISE</span>
           </h2>
-          <p className="text-sm sm:text-base text-gray-600 dark:text-slate-400">
-            Technologies I work with to build modern web applications
+          <p className="sk-subtext">
+            Production-tested technologies behind my web systems, APIs,
+            automation, and Linux-hosted deployments.
           </p>
         </div>
+      </motion.div>
 
-        <div className="grid lg:grid-cols-2 gap-6 sm:gap-8 mb-20 sm:mb-24 md:mb-32 animate-fadeInUp">
-          <SkillCard
-            title="Front-End Development"
-            skills={frontendSkills}
-            icon={
-              <svg className="w-5 h-5 sm:w-6 sm:h-6 text-gray-900 dark:text-slate-100 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
-              </svg>
-            }
-          />
+      <div className="sk-bounded">
+        <div className="sk-tree">
+          <motion.div
+            className="sk-root-row"
+            initial={{ opacity: 0, scale: 0.9 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
+          >
+            <div className="sk-root-node">PRODUCTION STACK</div>
+          </motion.div>
 
-          <SkillCard
-            title="Back-End & Tools"
-            skills={backendSkills}
-            icon={
-              <svg className="w-5 h-5 sm:w-6 sm:h-6 text-gray-900 dark:text-slate-100 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 12h14M5 12a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2M5 12a2 2 0 00-2 2v4a2 2 0 002 2h14a2 2 0 002-2v-4a2 2 0 00-2-2m-2-4h.01M17 16h.01" />
-              </svg>
-            }
-          />
-        </div>
+          <div className="sk-connectors" aria-hidden="true">
+            <svg
+              className="sk-svg"
+              viewBox="0 0 800 80"
+              preserveAspectRatio="none"
+            >
+              <line
+                x1="400"
+                y1="0"
+                x2="200"
+                y2="80"
+                stroke="var(--c-sk-connector-stroke)"
+                strokeWidth="1"
+                strokeDasharray="4 4"
+              />
+              <line
+                x1="400"
+                y1="0"
+                x2="400"
+                y2="80"
+                stroke="var(--c-sk-connector-stroke-mid)"
+                strokeWidth="1"
+                strokeDasharray="4 4"
+              />
+              <line
+                x1="400"
+                y1="0"
+                x2="600"
+                y2="80"
+                stroke="var(--c-sk-connector-stroke)"
+                strokeWidth="1"
+                strokeDasharray="4 4"
+              />
+            </svg>
+          </div>
 
-        <div className="text-center animate-fadeInUp">
-          <p className="text-gray-600 dark:text-slate-400 text-xs sm:text-sm">
-            Always learning and exploring new technologies to deliver better solutions
-          </p>
+          <motion.div
+            className="sk-groups"
+            variants={stagger}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-60px" }}
+          >
+            {GROUPS.map((group, i) => (
+              <GroupCard key={group.id} group={group} />
+            ))}
+          </motion.div>
         </div>
       </div>
     </section>

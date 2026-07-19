@@ -28,14 +28,14 @@ function ImageLightbox({ image, onClose }) {
 
   return (
     <div
-      className="fixed inset-0 bg-black bg-opacity-90 flex items-center justify-center z-50 p-4"
+      className="fixed inset-0 bg-[var(--c-lightbox-overlay)]  flex items-center justify-center z-50 p-4"
       onClick={onClose}
     >
       <button
-        className="absolute top-4 right-4 w-10 h-10 bg-white/10 backdrop-blur-sm hover:bg-white/20 flex items-center justify-center transition-all duration-200"
+        className="absolute top-4 right-4 w-10 h-10 bg-[var(--c-lightbox-close-bg)] backdrop-blur-sm hover:bg-[var(--c-lightbox-close-hover-bg)] flex items-center justify-center transition-all duration-200"
         onClick={onClose}
       >
-        <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <svg className="w-6 h-6 text-[var(--c-lightbox-close-icon)]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" />
         </svg>
       </button>

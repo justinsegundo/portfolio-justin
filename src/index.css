@@ -1,10 +1,870 @@
 @import "tailwindcss";
 
-
 @theme {
   --font-family-inter: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --font-family-unbounded: "Unbounded", sans-serif;
 }
 
+:root {
+  --c-bg: #f7f6fb;
+  --c-bg-alt: #efecf8;
+  --c-section-bg: #05050a;
+  --c-contact-field-label: rgba(20, 18, 31, 0.56);
+  --c-surface-1: rgba(255, 255, 255, 0.82);
+  --c-surface-2: rgba(255, 255, 255, 0.68);
+  --c-border: rgba(20, 18, 31, 0.1);
+  --c-border-strong: rgba(20, 18, 31, 0.18);
+  --c-text: rgba(20, 18, 31, 0.92);
+  --c-text-muted: rgba(20, 18, 31, 0.62);
+  --c-text-soft: rgba(20, 18, 31, 0.46);
+  --c-accent: #7c5cfc;
+  --c-accent-strong: #6a4ce0;
+  --c-accent-soft: rgba(124, 92, 252, 0.14);
+  --c-accent-outline: rgba(124, 92, 252, 0.62);
+  --c-success: #4ade80;
+  --c-danger: #f87171;
+  --fx-glow-accent: 0 0 24px rgba(124, 92, 252, 0.2);
+  --fx-glow-soft: 0 0 14px rgba(124, 92, 252, 0.12);
+  --fx-overlay: rgba(0, 0, 0, 0.55);
+  --c-white: #ffffff;
+
+  --c-nav-layer: rgba(247, 246, 251, 0.82);
+  --c-nav-layer-strong: rgba(255, 255, 255, 0.94);
+  --c-nav-border-subtle: rgba(20, 18, 31, 0.1);
+  --c-nav-text-high: rgba(20, 18, 31, 0.92);
+  --c-nav-text-mid: rgba(20, 18, 31, 0.64);
+  --c-nav-text-muted: rgba(20, 18, 31, 0.58);
+  --c-nav-text-soft: rgba(20, 18, 31, 0.48);
+  --c-nav-text-hover: rgba(20, 18, 31, 0.9);
+  --c-nav-surface-hover: rgba(20, 18, 31, 0.05);
+  --c-nav-icon-border: rgba(20, 18, 31, 0.12);
+  --c-nav-accent-text: rgba(92, 64, 210, 0.9);
+  --c-nav-accent-text-strong: rgba(82, 56, 190, 1);
+  --c-nav-accent-bg: rgba(124, 92, 252, 0.1);
+  --c-nav-accent-bg-strong: rgba(124, 92, 252, 0.16);
+  --c-nav-accent-border: rgba(124, 92, 252, 0.42);
+
+  --c-stt-border: rgba(124, 92, 252, 0.38);
+  --c-stt-bg: rgba(124, 92, 252, 0.18);
+  --c-stt-bg-hover: rgba(124, 92, 252, 0.28);
+  --c-stt-border-hover: rgba(124, 92, 252, 0.58);
+  --fx-stt-glow: 0 10px 24px rgba(124, 92, 252, 0.18), 0 0 8px rgba(124, 92, 252, 0.12);
+   /* --c-contact-glow: rgba(124, 92, 252, 0.07);
+  --c-contact-eyebrow-text: rgba(255, 255, 255, 0.35);
+  --c-contact-eyebrow-border: rgba(255, 255, 255, 0.07);
+  --c-contact-eyebrow-bg: rgba(255, 255, 255, 0.025);
+  --c-contact-outline: rgba(124, 92, 252, 0.6);
+  --c-contact-card-border: rgba(255, 255, 255, 0.06);
+  --c-contact-card-bg: rgba(255, 255, 255, 0.02);
+  --c-contact-link-hover-border: rgba(124, 92, 252, 0.35);
+  --c-contact-link-hover-bg: rgba(124, 92, 252, 0.04);
+  --c-contact-icon-bg: rgba(255, 255, 255, 0.03);
+  --c-contact-icon-accent: rgba(167, 139, 250, 0.7);
+  --c-contact-icon-accent-strong: rgba(167, 139, 250, 1);
+  --c-contact-icon-hover-bg: rgba(124, 92, 252, 0.12);
+  --c-contact-label: rgba(255, 255, 255, 0.28);
+  --c-contact-value: rgba(255, 255, 255, 0.7);
+  --c-contact-value-hover: rgba(255, 255, 255, 0.9);
+  --c-contact-arrow: rgba(255, 255, 255, 0.18);
+  --c-contact-avail-bg: rgba(74, 222, 128, 0.04);
+  --c-contact-avail-border: rgba(74, 222, 128, 0.12);
+  --c-contact-avail-ping: rgba(74, 222, 128, 0.5);
+  --c-contact-avail-dot-shadow: rgba(74, 222, 128, 0.6);
+  --c-contact-avail-text: rgba(134, 239, 172, 0.85);
+  --c-contact-input-border: rgba(255, 255, 255, 0.08);
+  --c-contact-input-bg: rgba(255, 255, 255, 0.03);
+  --c-contact-input-text: rgba(255, 255, 255, 0.85);
+  --c-contact-placeholder: rgba(255, 255, 255, 0.2);
+  --c-contact-focus-border: rgba(124, 92, 252, 0.5);
+  --c-contact-focus-bg: rgba(124, 92, 252, 0.04);
+  --c-contact-focus-ring: rgba(124, 92, 252, 0.08);
+  --c-contact-success-bg: rgba(74, 222, 128, 0.06);
+  --c-contact-success-border: rgba(74, 222, 128, 0.2);
+  --c-contact-success-text: rgba(134, 239, 172, 0.85);
+  --c-contact-error-bg: rgba(248, 113, 113, 0.06);
+  --c-contact-error-border: rgba(248, 113, 113, 0.2);
+  --c-contact-error-text: rgba(252, 165, 165, 0.85); */
+
+ --c-footer-bg: #f7f6fb;
+--c-footer-glow-line: rgba(124, 92, 252, 0.32);
+--c-footer-label: rgba(20, 18, 31, 0.42);
+--c-footer-value: rgba(20, 18, 31, 0.68);
+--c-footer-link-hover: rgba(92, 64, 210, 0.92);
+--c-footer-name: rgba(20, 18, 31, 0.9);
+--c-footer-tagline: rgba(20, 18, 31, 0.54);
+--c-footer-cta-label: rgba(20, 18, 31, 0.42);
+--c-footer-field-border: rgba(20, 18, 31, 0.1);
+--c-footer-field-bg: rgba(255, 255, 255, 0.58);
+--c-footer-field-hover-border: rgba(124, 92, 252, 0.34);
+--c-footer-field-hover-bg: rgba(124, 92, 252, 0.08);
+--c-footer-email: rgba(20, 18, 31, 0.62);
+--c-footer-btn-main: rgba(20, 18, 31, 0.92);
+--c-footer-btn-main-hover: var(--c-footer-link-hover);
+--c-footer-btn-outline: rgba(92, 64, 210, 0.82);
+--c-footer-btn-outline-hover: rgba(82, 56, 190, 1);
+--c-footer-divider: rgba(20, 18, 31, 0.08);
+--c-footer-copy: rgba(20, 18, 31, 0.58);
+--c-footer-mobile-divider: rgba(20, 18, 31, 0.08);
+
+  --c-sk-section-bg: #f7f6fb;
+--c-sk-glow: rgba(124, 92, 252, 0.12);
+--c-sk-eyebrow-text: rgba(20, 18, 31, 0.5);
+--c-sk-eyebrow-border: rgba(20, 18, 31, 0.1);
+--c-sk-eyebrow-bg: rgba(255, 255, 255, 0.56);
+--c-sk-dot-shadow: rgba(124, 92, 252, 0.42);
+--c-sk-heading: rgba(20, 18, 31, 0.95);
+--c-sk-heading-outline: rgba(124, 92, 252, 0.58);
+--c-sk-subtext: rgba(20, 18, 31, 0.58);
+--c-sk-root-border: rgba(124, 92, 252, 0.3);
+--c-sk-root-bg: rgba(124, 92, 252, 0.1);
+--c-sk-root-text: rgba(92, 64, 210, 0.9);
+--c-sk-root-shadow: rgba(124, 92, 252, 0.14);
+--c-sk-root-dot-shadow: rgba(124, 92, 252, 0.5);
+--c-sk-group-border: rgba(20, 18, 31, 0.1);
+--c-sk-group-bg: rgba(255, 255, 255, 0.58);
+--c-sk-group-overlay: rgba(124, 92, 252, 0.07);
+--c-sk-group-hover-border: rgba(124, 92, 252, 0.34);
+--c-sk-group-hover-shadow: rgba(124, 92, 252, 0.14);
+--c-sk-group-label: rgba(92, 64, 210, 0.86);
+--c-sk-chip-bg: rgba(255, 255, 255, 0.62);
+--c-sk-chip-border: rgba(20, 18, 31, 0.1);
+--c-sk-chip-hover-border: rgba(124, 92, 252, 0.38);
+--c-sk-chip-hover-bg: rgba(124, 92, 252, 0.08);
+--c-sk-chip-text: rgba(20, 18, 31, 0.68);
+--c-sk-connector-stroke: rgba(124, 92, 252, 0.24);
+--c-sk-connector-stroke-mid: rgba(124, 92, 252, 0.2);
+
+--c-svc-heading: rgba(20, 18, 31, 0.95);
+--c-svc-scene-bg: #f3f0fa;
+--c-svc-glow-1: rgba(124, 92, 252, 0.14);
+--c-svc-glow-2: rgba(124, 92, 252, 0.08);
+--c-svc-vignette: rgba(124, 92, 252, 0.08);
+--c-svc-star: rgba(20, 18, 31, 0.38);
+--c-svc-eyebrow-text: rgba(20, 18, 31, 0.5);
+--c-svc-eyebrow-border: rgba(20, 18, 31, 0.1);
+--c-svc-eyebrow-bg: rgba(255, 255, 255, 0.56);
+--c-svc-dot-shadow: rgba(124, 92, 252, 0.42);
+--c-svc-heading-outline: rgba(124, 92, 252, 0.58);
+--c-svc-subtext: rgba(20, 18, 31, 0.58);
+--c-svc-face-border: rgba(20, 18, 31, 0.1);
+--c-svc-face-focus-border: rgba(124, 92, 252, 0.55);
+--c-svc-face-hover-border: rgba(124, 92, 252, 0.38);
+--c-svc-face-hover-shadow: rgba(124, 92, 252, 0.16);
+
+--c-svc-front-bg: rgba(255, 255, 255, 0.62);
+--c-svc-front-overlay-1: rgba(255, 255, 255, 0.92);
+--c-svc-front-overlay-2: rgba(255, 255, 255, 0.68);
+--c-svc-front-overlay-3: rgba(255, 255, 255, 0.32);
+--c-svc-front-overlay-mid: rgba(255, 255, 255, 0.58);
+
+--c-svc-back-bg: rgba(255, 255, 255, 0.7);
+--c-svc-back-border: rgba(124, 92, 252, 0.2);
+--c-svc-panel-glow-1: rgba(124, 92, 252, 0.12);
+--c-svc-panel-glow-2: rgba(92, 64, 210, 0.08);
+--c-svc-panel-grad-1: rgba(255, 255, 255, 0.78);
+--c-svc-panel-grad-2: rgba(244, 240, 255, 0.68);
+
+--c-svc-badge-text: rgba(92, 64, 210, 0.78);
+--c-svc-title-grad-start: rgba(20, 18, 31, 0.94);
+--c-svc-title-grad-end: rgba(92, 64, 210, 0.9);
+--c-svc-front-sub: rgba(20, 18, 31, 0.58);
+--c-svc-hint: rgba(20, 18, 31, 0.34);
+--c-svc-back-cat: rgba(92, 64, 210, 0.74);
+--c-svc-back-title: rgba(20, 18, 31, 0.9);
+--c-svc-back-rule: rgba(124, 92, 252, 0.18);
+--c-svc-point: rgba(20, 18, 31, 0.62);
+--c-svc-point-pip: rgba(124, 92, 252, 0.78);
+
+--c-svc-cta-text: rgba(22, 101, 52, 0.78);
+--c-svc-cta-dot: rgb(74, 222, 128);
+--c-svc-cta-dot-shadow: rgba(74, 222, 128, 0.65);
+--c-svc-cta-pulse-start: rgba(74, 222, 128, 0.5);
+--c-svc-cta-pulse-end: rgba(74, 222, 128, 0);
+--c-svc-scroll-hint: rgba(20, 18, 31, 0.42);
+--c-svc-mobile-focus-border: rgba(124, 92, 252, 0.55);
+--c-svc-cursor-bg: rgba(255, 255, 255, 0.82);
+--c-svc-cursor-border: rgba(124, 92, 252, 0.34);
+--c-svc-cursor-shadow-ring: rgba(124, 92, 252, 0.08);
+--c-svc-cursor-shadow-glow: rgba(124, 92, 252, 0.2);
+--c-svc-cursor-shadow-glow-soft: rgba(124, 92, 252, 0.16);
+--c-svc-cursor-shadow-glow-strong: rgba(124, 92, 252, 0.28);
+--c-svc-cursor-shadow-ring-strong: rgba(124, 92, 252, 0.12);
+--c-svc-cursor-inset: rgba(255, 255, 255, 0.65);
+--c-svc-cursor-ring: rgba(124, 92, 252, 0.32);
+--c-svc-cursor-top: rgba(20, 18, 31, 0.88);
+--c-svc-cursor-rule: rgba(124, 92, 252, 0.42);
+--c-svc-cursor-bot: rgba(92, 64, 210, 0.82);
+
+--c-projects-section-bg: #f7f6fb;
+--c-projects-dot-fill: #14121f;
+--c-projects-radial-right: rgba(124, 92, 252, 0.13);
+--c-projects-radial-left: rgba(124, 92, 252, 0.08);
+
+--c-projects-accent: #7c5cfc;
+--c-projects-accent-glow: rgba(124, 92, 252, 0.46);
+--c-projects-accent-glow-strong: rgba(124, 92, 252, 0.52);
+
+--c-projects-heading: rgba(20, 18, 31, 0.95);
+--c-projects-heading-outline: rgba(124, 92, 252, 0.58);
+--c-projects-subtext: rgba(20, 18, 31, 0.58);
+
+--c-projects-eyebrow-text: rgba(20, 18, 31, 0.5);
+--c-projects-eyebrow-border: rgba(20, 18, 31, 0.1);
+--c-projects-eyebrow-bg: rgba(255, 255, 255, 0.52);
+
+--c-projects-tabs-bg: rgba(255, 255, 255, 0.56);
+--c-projects-tabs-border: rgba(20, 18, 31, 0.1);
+--c-projects-tab-hover-bg: rgba(20, 18, 31, 0.04);
+--c-projects-tab-hover-border: rgba(20, 18, 31, 0.08);
+--c-projects-tab-active-bg: rgba(124, 92, 252, 0.12);
+--c-projects-tab-active-border: rgba(124, 92, 252, 0.32);
+--c-projects-tab-label: rgba(20, 18, 31, 0.56);
+--c-projects-tab-label-hover: rgba(20, 18, 31, 0.78);
+--c-projects-tab-label-active: rgba(92, 64, 210, 0.95);
+--c-projects-tab-sublabel-bg: rgba(20, 18, 31, 0.06);
+--c-projects-tab-sublabel-text: rgba(20, 18, 31, 0.45);
+--c-projects-tab-sublabel-active-bg: rgba(124, 92, 252, 0.16);
+--c-projects-tab-sublabel-active-text: rgba(92, 64, 210, 0.78);
+
+--c-projects-company-badge-text: rgba(20, 18, 31, 0.48);
+--c-projects-company-badge-border: rgba(20, 18, 31, 0.1);
+--c-projects-company-badge-bg: rgba(255, 255, 255, 0.56);
+--c-projects-company-dot-live: rgb(74, 222, 128);
+--c-projects-company-dot-live-glow: rgba(74, 222, 128, 0.6);
+--c-projects-company-dot-prev: rgba(255, 200, 80, 0.9);
+--c-projects-company-dot-prev-glow: rgba(255, 200, 80, 0.5);
+--c-projects-company-text: rgba(20, 18, 31, 0.46);
+
+--c-projects-tag-text: rgba(20, 18, 31, 0.52);
+--c-projects-tag-border: rgba(20, 18, 31, 0.1);
+--c-projects-tag-bg: rgba(255, 255, 255, 0.54);
+--c-projects-badge-text: rgba(20, 18, 31, 0.44);
+
+--c-projects-stat-sep: rgba(20, 18, 31, 0.1);
+--c-projects-stat-value: rgba(20, 18, 31, 0.92);
+--c-projects-stat-label: rgba(20, 18, 31, 0.44);
+
+--c-projects-img-overlay: rgba(0, 0, 0, 0);
+--c-projects-img-overlay-hover: rgba(0, 0, 0, 0.35);
+--c-projects-img-wrap-bg: rgba(20, 18, 31, 0.04);
+
+--c-projects-card-border: rgba(20, 18, 31, 0.1);
+--c-projects-card-bg: rgba(255, 255, 255, 0.58);
+--c-projects-card-hover-border: rgba(124, 92, 252, 0.32);
+--c-projects-card-hover-shadow: rgba(124, 92, 252, 0.14);
+
+--c-projects-icon-wrap-bg: rgba(124, 92, 252, 0.07);
+--c-projects-icon-wrap-border: rgba(20, 18, 31, 0.08);
+--c-projects-icon-inner-bg: rgba(124, 92, 252, 0.12);
+--c-projects-icon-inner-border: rgba(124, 92, 252, 0.22);
+--c-projects-icon-inner-text: rgba(92, 64, 210, 0.86);
+
+--c-projects-title: rgba(20, 18, 31, 0.92);
+--c-projects-desc: rgba(20, 18, 31, 0.58);
+
+--c-projects-github-text: rgba(20, 18, 31, 0.58);
+--c-projects-github-border: rgba(20, 18, 31, 0.12);
+--c-projects-github-hover-text: rgba(20, 18, 31, 0.94);
+--c-projects-github-hover-border: rgba(124, 92, 252, 0.45);
+--c-projects-github-hover-bg: rgba(124, 92, 252, 0.1);
+
+--c-projects-page-btn-border: rgba(20, 18, 31, 0.12);
+--c-projects-page-btn-bg: rgba(255, 255, 255, 0.58);
+--c-projects-page-btn-text: rgba(20, 18, 31, 0.52);
+--c-projects-page-btn-hover-border: rgba(124, 92, 252, 0.48);
+--c-projects-page-btn-hover-bg: rgba(124, 92, 252, 0.1);
+--c-projects-page-btn-hover-text: rgba(20, 18, 31, 0.9);
+--c-projects-page-btn-hover-shadow: rgba(124, 92, 252, 0.18);
+
+--c-projects-page-counter-text: rgba(20, 18, 31, 0.48);
+--c-projects-page-counter-border: rgba(20, 18, 31, 0.1);
+--c-projects-page-counter-bg: rgba(255, 255, 255, 0.56);
+--c-projects-page-current: rgba(92, 64, 210, 0.9);
+--c-projects-page-sep: rgba(20, 18, 31, 0.22);
+
+--c-about-section-bg: #f3f0fa;
+--c-about-dot-fill: #14121f;
+--c-about-radial-left: rgba(124, 92, 252, 0.12);
+--c-about-radial-bottom: rgba(124, 92, 252, 0.08);
+--c-about-label-text: rgba(20, 18, 31, 0.48);
+--c-about-dot-accent: #7c5cfc;
+--c-about-dot-glow: rgba(124, 92, 252, 0.36);
+--c-about-rotating-word: rgba(92, 64, 210, 0.9);
+--c-about-heading: rgba(20, 18, 31, 0.94);
+--c-about-heading-dim: rgba(20, 18, 31, 0.36);
+--c-about-meta-text: rgba(20, 18, 31, 0.52);
+--c-about-meta-icon: rgba(124, 92, 252, 0.72);
+--c-about-body-text: rgba(20, 18, 31, 0.66);
+--c-about-accent-text: #6a4ce0;
+--c-about-card-border: rgba(20, 18, 31, 0.1);
+--c-about-card-bg: rgba(255, 255, 255, 0.58);
+--c-about-card-hover-border: rgba(124, 92, 252, 0.34);
+--c-about-card-hover-bg: rgba(124, 92, 252, 0.08);
+--c-about-card-icon-bg: rgba(124, 92, 252, 0.08);
+--c-about-card-icon-border: rgba(124, 92, 252, 0.16);
+--c-about-card-icon-hover-bg: rgba(124, 92, 252, 0.14);
+--c-about-card-icon-stroke: rgba(92, 64, 210, 0.72);
+--c-about-card-title: rgba(20, 18, 31, 0.9);
+--c-about-card-sub: rgba(20, 18, 31, 0.48);
+--c-about-card-eye: rgba(20, 18, 31, 0.32);
+--c-about-card-eye-hover: rgba(92, 64, 210, 0.82);
+--c-about-status-bg: rgba(124, 92, 252, 0.08);
+--c-about-status-border: rgba(124, 92, 252, 0.18);
+--c-about-status-dot: #4ade80;
+--c-about-status-dot-glow: rgba(74, 222, 128, 0.5);
+--c-about-status-text: rgba(20, 18, 31, 0.54);
+--c-about-timeline-border: rgba(20, 18, 31, 0.1);
+--c-about-timeline-accent-border: rgba(124, 92, 252, 0.42);
+--c-about-timeline-bg: rgba(255, 255, 255, 0.5);
+--c-about-divider: rgba(20, 18, 31, 0.08);
+--c-about-exp-date: rgba(92, 64, 210, 0.72);
+--c-about-exp-role: rgba(20, 18, 31, 0.88);
+--c-about-exp-company: rgba(20, 18, 31, 0.48);
+--c-about-exp-desc: rgba(20, 18, 31, 0.6);
+--c-about-snapshot-border: rgba(20, 18, 31, 0.1);
+--c-about-snapshot-bg: rgba(255, 255, 255, 0.52);
+--c-about-snapshot-cell-border: rgba(20, 18, 31, 0.08);
+--c-about-snapshot-cta-top-border: rgba(20, 18, 31, 0.08);
+--c-about-snapshot-hover-bg: rgba(124, 92, 252, 0.07);
+--c-about-snapshot-label: rgba(20, 18, 31, 0.42);
+--c-about-snapshot-value: rgba(20, 18, 31, 0.86);
+--c-about-cta-title-soft: rgba(20, 18, 31, 0.82);
+--c-about-cta-title: rgba(20, 18, 31, 0.86);
+--c-about-cta-body-soft: rgba(20, 18, 31, 0.58);
+--c-about-cta-body: rgba(20, 18, 31, 0.6);
+--c-about-cta-note-bg: rgba(255, 255, 255, 0.42);
+--c-about-cta-link: rgba(92, 64, 210, 0.78);
+--c-about-cta-link-hover: rgba(82, 56, 190, 1);
+
+--c-hero-bg: #f7f6fb;
+--c-hero-dot-fill: #14121f;
+--c-hero-radial-right: rgba(124, 92, 252, 0.14);
+--c-hero-radial-top: rgba(124, 92, 252, 0.09);
+
+--c-hero-social-text: rgba(20, 18, 31, 0.56);
+--c-hero-social-border: rgba(20, 18, 31, 0.12);
+--c-hero-social-hover-text: rgba(20, 18, 31, 0.92);
+--c-hero-social-hover-border: rgba(124, 92, 252, 0.45);
+--c-hero-social-hover-bg: rgba(124, 92, 252, 0.1);
+
+--c-hero-stat-value: rgba(20, 18, 31, 0.94);
+--c-hero-stat-label: rgba(20, 18, 31, 0.46);
+
+--c-hero-btn-primary-text: #ffffff;
+--c-hero-btn-primary-bg: #7c5cfc;
+--c-hero-btn-primary-border: #7c5cfc;
+
+--c-hero-btn-secondary-text: rgba(20, 18, 31, 0.68);
+--c-hero-btn-secondary-border: rgba(20, 18, 31, 0.12);
+--c-hero-btn-secondary-bg: rgba(255, 255, 255, 0.58);
+--c-hero-btn-secondary-hover-text: rgba(20, 18, 31, 0.94);
+--c-hero-btn-secondary-hover-border: rgba(124, 92, 252, 0.38);
+
+--c-hero-floating-shadow: rgba(20, 18, 31, 0.14);
+
+--c-hero-glow-core: rgba(124, 92, 252, 0.18);
+--c-hero-glow-mid: rgba(124, 92, 252, 0.08);
+--c-hero-ring-border: rgba(124, 92, 252, 0.16);
+
+--c-hero-avatar-grad-1: rgba(124, 92, 252, 0.45);
+--c-hero-avatar-grad-2: rgba(124, 92, 252, 0.12);
+--c-hero-avatar-grad-3: rgba(80, 60, 180, 0.16);
+--c-hero-avatar-inner-bg: #ede9f8;
+--c-hero-avatar-overlay-top: rgba(124, 92, 252, 0.08);
+--c-hero-avatar-overlay-bottom: rgba(247, 246, 251, 0.58);
+
+--c-hero-status-bg: rgba(255, 255, 255, 0.78);
+--c-hero-status-border: rgba(20, 18, 31, 0.1);
+--c-hero-status-shadow: rgba(20, 18, 31, 0.14);
+--c-hero-status-dot: rgb(74, 222, 128);
+--c-hero-status-dot-glow: rgba(74, 222, 128, 0.55);
+--c-hero-status-pulse: rgba(74, 222, 128, 0.45);
+--c-hero-status-text: rgba(20, 18, 31, 0.72);
+
+--c-hero-title: rgba(20, 18, 31, 0.95);
+--c-hero-subtitle: rgba(20, 18, 31, 0.64);
+--c-hero-accent: #7c5cfc;
+--c-hero-title-dim: rgba(20, 18, 31, 0.36);
+--c-hero-desc: rgba(20, 18, 31, 0.6);
+
+--c-hero-avatar-glow-strong: rgba(124, 92, 252, 0.16);
+--c-hero-avatar-glow-soft: rgba(124, 92, 252, 0.08);
+--c-hero-status-pulse-clear: rgba(74, 222, 128, 0);
+
+--c-hero-views-border: rgba(20, 18, 31, 0.1);
+--c-hero-views-bg: rgba(255, 255, 255, 0.62);
+--c-hero-views-text: rgba(20, 18, 31, 0.56);
+--c-hero-views-skeleton: rgba(20, 18, 31, 0.1);
+
+--c-cert-modal-overlay: rgba(0, 0, 0, 0.4);
+--c-cert-modal-surface: #0f172a;
+--c-cert-modal-close-icon: #111827;
+
+--c-lightbox-overlay: rgba(0, 0, 0, 0.9);
+--c-lightbox-close-bg: rgba(255, 255, 255, 0.1);
+--c-lightbox-close-hover-bg: rgba(255, 255, 255, 0.2);
+--c-lightbox-close-icon: #ffffff;
+
+--c-contact-dot-shadow: rgba(124, 92, 252, 0.8);
+--c-contact-submit-hover-bg: #6a4ce0;
+
+
+
+--c-contact-section-bg: #f7f6fb;
+--c-contact-heading: rgba(20, 18, 31, 0.95);
+--c-contact-glow: rgba(124, 92, 252, 0.12);
+--c-contact-eyebrow-text: rgba(20, 18, 31, 0.5);
+--c-contact-eyebrow-border: rgba(20, 18, 31, 0.1);
+--c-contact-eyebrow-bg: rgba(255, 255, 255, 0.56);
+--c-contact-outline: rgba(124, 92, 252, 0.58);
+--c-contact-card-border: rgba(20, 18, 31, 0.1);
+--c-contact-card-bg: rgba(255, 255, 255, 0.58);
+--c-contact-link-hover-border: rgba(124, 92, 252, 0.34);
+--c-contact-link-hover-bg: rgba(124, 92, 252, 0.08);
+--c-contact-icon-bg: rgba(124, 92, 252, 0.08);
+--c-contact-icon-accent: rgba(92, 64, 210, 0.72);
+--c-contact-icon-accent-strong: rgba(82, 56, 190, 1);
+--c-contact-icon-hover-bg: rgba(124, 92, 252, 0.14);
+--c-contact-label: rgba(20, 18, 31, 0.42);
+--c-contact-value: rgba(20, 18, 31, 0.68);
+--c-contact-value-hover: rgba(20, 18, 31, 0.92);
+--c-contact-arrow: rgba(20, 18, 31, 0.3);
+--c-contact-avail-bg: rgba(74, 222, 128, 0.08);
+--c-contact-avail-border: rgba(22, 101, 52, 0.16);
+--c-contact-avail-ping: rgba(74, 222, 128, 0.42);
+--c-contact-avail-dot-shadow: rgba(74, 222, 128, 0.5);
+--c-contact-avail-text: rgba(22, 101, 52, 0.78);
+--c-contact-input-border: rgba(20, 18, 31, 0.12);
+--c-contact-input-bg: rgba(255, 255, 255, 0.66);
+--c-contact-input-text: rgba(20, 18, 31, 0.86);
+--c-contact-placeholder: rgba(20, 18, 31, 0.34);
+--c-contact-focus-border: rgba(124, 92, 252, 0.48);
+--c-contact-focus-bg: rgba(255, 255, 255, 0.82);
+--c-contact-focus-ring: rgba(124, 92, 252, 0.14);
+--c-contact-success-bg: rgba(74, 222, 128, 0.1);
+--c-contact-success-border: rgba(22, 101, 52, 0.18);
+--c-contact-success-text: rgba(22, 101, 52, 0.82);
+--c-contact-error-bg: rgba(248, 113, 113, 0.1);
+--c-contact-error-border: rgba(185, 28, 28, 0.18);
+--c-contact-error-text: rgba(153, 27, 27, 0.82);
+--c-contact-dot-shadow: rgba(124, 92, 252, 0.42);
+--c-contact-submit-hover-bg: #6a4ce0;
+
+}
+
+.dark {
+  --c-bg: #05050a;
+  --c-section-bg: #05050a;
+  --c-contact-field-label: rgba(255, 255, 255, 0.5);
+  --c-bg-alt: #09090f;
+  --c-surface-1: rgba(255, 255, 255, 0.02);
+  --c-surface-2: rgba(255, 255, 255, 0.04);
+  --c-border: rgba(255, 255, 255, 0.07);
+  --c-border-strong: rgba(255, 255, 255, 0.12);
+  --c-text: rgba(255, 255, 255, 0.9);
+  --c-text-muted: rgba(255, 255, 255, 0.56);
+  --c-text-soft: rgba(255, 255, 255, 0.35);
+  --c-accent: #7c5cfc;
+  --c-accent-strong: #6a4ce0;
+  --c-accent-soft: rgba(124, 92, 252, 0.14);
+  --c-accent-outline: rgba(167, 139, 250, 0.9);
+  --c-success: #4ade80;
+  --c-danger: #f87171;
+  --fx-glow-accent: 0 0 24px rgba(124, 92, 252, 0.2);
+  --fx-glow-soft: 0 0 14px rgba(124, 92, 252, 0.12);
+  --fx-overlay: rgba(0, 0, 0, 0.55);
+  --c-white: #ffffff;
+  --c-contact-section-bg: #05050a;
+  --c-contact-heading: #ffffff;
+
+  --c-nav-layer: rgba(5, 5, 10, 0.85);
+  --c-nav-layer-strong: rgba(5, 5, 10, 0.96);
+  --c-nav-border-subtle: rgba(255, 255, 255, 0.05);
+  --c-nav-text-high: rgba(255, 255, 255, 0.9);
+  --c-nav-text-mid: rgba(255, 255, 255, 0.58);
+  --c-nav-text-muted: rgba(255, 255, 255, 0.56);
+  --c-nav-text-soft: rgba(255, 255, 255, 0.4);
+  --c-nav-text-hover: rgba(255, 255, 255, 0.85);
+  --c-nav-surface-hover: rgba(255, 255, 255, 0.04);
+  --c-nav-icon-border: rgba(255, 255, 255, 0.08);
+  --c-nav-accent-text: rgba(167, 139, 250, 0.9);
+  --c-nav-accent-text-strong: rgba(167, 139, 250, 1);
+  --c-nav-accent-bg: rgba(124, 92, 252, 0.08);
+  --c-nav-accent-bg-strong: rgba(124, 92, 252, 0.12);
+  --c-nav-accent-border: rgba(124, 92, 252, 0.45);
+
+  --c-stt-border: rgba(124, 92, 252, 0.4);
+  --c-stt-bg: rgba(124, 92, 252, 0.15);
+  --c-stt-bg-hover: rgba(124, 92, 252, 0.35);
+  --c-stt-border-hover: rgba(124, 92, 252, 0.7);
+  --fx-stt-glow: 0 0 20px rgba(124, 92, 252, 0.3), 0 0 6px rgba(124, 92, 252, 0.15);
+
+  --c-sk-section-bg: #09090f;
+--c-sk-glow: rgba(124, 92, 252, 0.07);
+--c-sk-eyebrow-text: rgba(255, 255, 255, 0.35);
+--c-sk-eyebrow-border: rgba(255, 255, 255, 0.07);
+--c-sk-eyebrow-bg: rgba(255, 255, 255, 0.025);
+--c-sk-dot-shadow: rgba(124, 92, 252, 0.8);
+--c-sk-heading: #ffffff;
+--c-sk-heading-outline: rgba(124, 92, 252, 0.6);
+--c-sk-subtext: rgba(255, 255, 255, 0.3);
+--c-sk-root-border: rgba(124, 92, 252, 0.35);
+--c-sk-root-bg: rgba(124, 92, 252, 0.08);
+--c-sk-root-text: rgba(167, 139, 250, 0.9);
+--c-sk-root-shadow: rgba(124, 92, 252, 0.1);
+--c-sk-root-dot-shadow: rgba(124, 92, 252, 0.9);
+--c-sk-group-border: rgba(255, 255, 255, 0.06);
+--c-sk-group-bg: rgba(255, 255, 255, 0.018);
+--c-sk-group-overlay: rgba(124, 92, 252, 0.08);
+--c-sk-group-hover-border: rgba(124, 92, 252, 0.32);
+--c-sk-group-hover-shadow: rgba(124, 92, 252, 0.14);
+--c-sk-group-label: rgba(167, 139, 250, 0.85);
+--c-sk-chip-bg: rgba(255, 255, 255, 0.025);
+--c-sk-chip-border: rgba(255, 255, 255, 0.07);
+--c-sk-chip-hover-border: rgba(124, 92, 252, 0.42);
+--c-sk-chip-hover-bg: rgba(255, 255, 255, 0.04);
+--c-sk-chip-text: rgba(200, 195, 225, 0.75);
+--c-sk-connector-stroke: rgba(124, 92, 252, 0.25);
+--c-sk-connector-stroke-mid: rgba(124, 92, 252, 0.2);
+
+--c-svc-heading: #ffffff;
+--c-svc-scene-bg: #05050a;
+
+--c-svc-glow-1: rgba(124, 92, 252, 0.09);
+--c-svc-glow-2: rgba(124, 92, 252, 0.05);
+--c-svc-vignette: rgba(0, 0, 0, 0.75);
+--c-svc-star: #ffffff;
+--c-svc-eyebrow-text: rgba(255, 255, 255, 0.35);
+--c-svc-eyebrow-border: rgba(255, 255, 255, 0.07);
+--c-svc-eyebrow-bg: rgba(255, 255, 255, 0.025);
+--c-svc-dot-shadow: rgba(124, 92, 252, 0.8);
+--c-svc-heading: #ffffff;
+--c-svc-heading-outline: rgba(124, 92, 252, 0.65);
+--c-svc-subtext: rgba(255, 255, 255, 0.32);
+--c-svc-face-border: rgba(255, 255, 255, 0.1);
+--c-svc-face-focus-border: rgba(124, 92, 252, 0.5);
+--c-svc-face-hover-border: rgba(124, 92, 252, 0.3);
+--c-svc-face-hover-shadow: rgba(124, 92, 252, 0.12);
+--c-svc-front-bg: rgba(8, 7, 18, 0.9);
+--c-svc-front-overlay-1: rgba(4, 3, 12, 0.97);
+--c-svc-front-overlay-2: rgba(4, 3, 12, 0.72);
+--c-svc-front-overlay-3: rgba(4, 3, 12, 0.28);
+--c-svc-front-overlay-mid: rgba(4, 3, 12, 0.55);
+--c-svc-back-bg: rgba(12, 8, 28, 0.95);
+--c-svc-back-border: rgba(124, 92, 252, 0.25);
+--c-svc-panel-glow-1: rgba(124, 92, 252, 0.22);
+--c-svc-panel-glow-2: rgba(60, 36, 160, 0.25);
+--c-svc-panel-grad-1: rgba(22, 14, 55, 0.95);
+--c-svc-panel-grad-2: rgba(6, 5, 16, 0.98);
+--c-svc-badge-text: rgba(124, 92, 252, 0.8);
+--c-svc-title-grad-start: #ffffff;
+--c-svc-title-grad-end: rgba(160, 120, 255, 0.9);
+--c-svc-front-sub: rgba(255, 255, 255, 0.34);
+--c-svc-hint: rgba(255, 255, 255, 0.18);
+--c-svc-back-cat: rgba(124, 92, 252, 0.65);
+--c-svc-back-title: rgba(255, 255, 255, 0.82);
+--c-svc-back-rule: rgba(124, 92, 252, 0.2);
+--c-svc-point: rgba(255, 255, 255, 0.44);
+--c-svc-point-pip: rgba(124, 92, 252, 0.7);
+--c-svc-cta-text: rgba(74, 222, 128, 0.6);
+--c-svc-cta-dot: rgb(74, 222, 128);
+--c-svc-cta-dot-shadow: rgba(74, 222, 128, 0.65);
+--c-svc-cta-pulse-start: rgba(74, 222, 128, 0.5);
+--c-svc-cta-pulse-end: rgba(74, 222, 128, 0);
+--c-svc-scroll-hint: rgba(255, 255, 255, 0.2);
+--c-svc-mobile-focus-border: rgba(124, 92, 252, 0.4);
+--c-svc-cursor-bg: rgba(8, 5, 20, 0.78);
+--c-svc-cursor-border: rgba(124, 92, 252, 0.3);
+--c-svc-cursor-shadow-ring: rgba(124, 92, 252, 0.06);
+--c-svc-cursor-shadow-glow: rgba(124, 92, 252, 0.22);
+--c-svc-cursor-shadow-glow-soft: rgba(124, 92, 252, 0.18);
+--c-svc-cursor-shadow-glow-strong: rgba(124, 92, 252, 0.32);
+--c-svc-cursor-shadow-ring-strong: rgba(124, 92, 252, 0.09);
+--c-svc-cursor-inset: rgba(255, 255, 255, 0.05);
+--c-svc-cursor-ring: rgba(124, 92, 252, 0.22);
+--c-svc-cursor-top: rgba(255, 255, 255, 0.88);
+--c-svc-cursor-rule: rgba(124, 92, 252, 0.42);
+--c-svc-cursor-bot: rgba(124, 92, 252, 0.78);
+
+--c-projects-section-bg: #05050a;
+--c-projects-dot-fill: #ffffff;
+--c-projects-radial-right: rgba(124, 92, 252, 0.09);
+--c-projects-radial-left: rgba(124, 92, 252, 0.05);
+
+--c-projects-accent-glow: rgba(124, 92, 252, 0.7);
+--c-projects-accent-glow-strong: rgba(124, 92, 252, 0.8);
+
+--c-projects-heading: #ffffff;
+--c-projects-heading-outline: rgba(124, 92, 252, 0.65);
+--c-projects-subtext: rgba(255, 255, 255, 0.32);
+
+--c-projects-eyebrow-text: rgba(255, 255, 255, 0.35);
+--c-projects-eyebrow-border: rgba(255, 255, 255, 0.07);
+--c-projects-eyebrow-bg: rgba(255, 255, 255, 0.025);
+
+--c-projects-tabs-bg: rgba(255, 255, 255, 0.02);
+--c-projects-tabs-border: rgba(255, 255, 255, 0.05);
+--c-projects-tab-hover-bg: rgba(255, 255, 255, 0.04);
+--c-projects-tab-hover-border: rgba(255, 255, 255, 0.06);
+--c-projects-tab-active-bg: rgba(124, 92, 252, 0.12);
+--c-projects-tab-active-border: rgba(124, 92, 252, 0.3);
+--c-projects-tab-label: rgba(255, 255, 255, 0.48);
+--c-projects-tab-label-hover: rgba(255, 255, 255, 0.7);
+--c-projects-tab-label-active: rgba(167, 139, 250, 1);
+--c-projects-tab-sublabel-bg: rgba(255, 255, 255, 0.05);
+--c-projects-tab-sublabel-text: rgba(255, 255, 255, 0.35);
+--c-projects-tab-sublabel-active-bg: rgba(124, 92, 252, 0.2);
+--c-projects-tab-sublabel-active-text: rgba(167, 139, 250, 0.8);
+
+--c-projects-company-badge-text: rgba(255, 255, 255, 0.3);
+--c-projects-company-badge-border: rgba(255, 255, 255, 0.06);
+--c-projects-company-badge-bg: rgba(255, 255, 255, 0.02);
+--c-projects-company-dot-live: rgb(74, 222, 128);
+--c-projects-company-dot-live-glow: rgba(74, 222, 128, 0.6);
+--c-projects-company-dot-prev: rgba(255, 200, 80, 0.9);
+--c-projects-company-dot-prev-glow: rgba(255, 200, 80, 0.5);
+--c-projects-company-text: rgba(255, 255, 255, 0.28);
+
+--c-projects-tag-text: rgba(255, 255, 255, 0.35);
+--c-projects-tag-border: rgba(255, 255, 255, 0.08);
+--c-projects-tag-bg: rgba(255, 255, 255, 0.03);
+--c-projects-badge-text: rgba(255, 255, 255, 0.3);
+
+--c-projects-stat-sep: rgba(255, 255, 255, 0.08);
+--c-projects-stat-value: #ffffff;
+--c-projects-stat-label: rgba(255, 255, 255, 0.25);
+
+--c-projects-img-overlay: rgba(0, 0, 0, 0);
+--c-projects-img-overlay-hover: rgba(0, 0, 0, 0.35);
+--c-projects-img-wrap-bg: rgba(255, 255, 255, 0.03);
+
+--c-projects-card-border: rgba(255, 255, 255, 0.07);
+--c-projects-card-bg: rgba(255, 255, 255, 0.025);
+--c-projects-card-hover-border: rgba(124, 92, 252, 0.25);
+--c-projects-card-hover-shadow: rgba(124, 92, 252, 0.07);
+
+--c-projects-icon-wrap-bg: rgba(124, 92, 252, 0.04);
+--c-projects-icon-wrap-border: rgba(255, 255, 255, 0.05);
+--c-projects-icon-inner-bg: rgba(124, 92, 252, 0.12);
+--c-projects-icon-inner-border: rgba(124, 92, 252, 0.2);
+--c-projects-icon-inner-text: rgba(124, 92, 252, 0.8);
+
+--c-projects-title: #ffffff;
+--c-projects-desc: rgba(255, 255, 255, 0.38);
+
+--c-projects-github-text: rgba(255, 255, 255, 0.55);
+--c-projects-github-border: rgba(255, 255, 255, 0.1);
+--c-projects-github-hover-text: #ffffff;
+--c-projects-github-hover-border: rgba(124, 92, 252, 0.45);
+--c-projects-github-hover-bg: rgba(124, 92, 252, 0.12);
+
+--c-projects-page-btn-border: rgba(255, 255, 255, 0.1);
+--c-projects-page-btn-bg: rgba(255, 255, 255, 0.03);
+--c-projects-page-btn-text: rgba(255, 255, 255, 0.4);
+--c-projects-page-btn-hover-border: rgba(124, 92, 252, 0.5);
+--c-projects-page-btn-hover-bg: rgba(124, 92, 252, 0.1);
+--c-projects-page-btn-hover-text: #ffffff;
+--c-projects-page-btn-hover-shadow: rgba(124, 92, 252, 0.2);
+
+--c-projects-page-counter-text: rgba(255, 255, 255, 0.3);
+--c-projects-page-counter-border: rgba(255, 255, 255, 0.07);
+--c-projects-page-counter-bg: rgba(255, 255, 255, 0.025);
+--c-projects-page-current: rgba(124, 92, 252, 0.9);
+--c-projects-page-sep: rgba(255, 255, 255, 0.15);
+
+--c-about-section-bg: #05050a;
+--c-about-dot-fill: #ffffff;
+--c-about-radial-left: rgba(124, 92, 252, 0.08);
+--c-about-radial-bottom: rgba(124, 92, 252, 0.05);
+--c-about-label-text: rgba(255, 255, 255, 0.35);
+--c-about-dot-accent: #7c5cfc;
+--c-about-dot-glow: rgba(124, 92, 252, 0.6);
+--c-about-rotating-word: rgba(167, 139, 250, 0.9);
+--c-about-heading: #ffffff;
+--c-about-heading-dim: rgba(255, 255, 255, 0.18);
+--c-about-meta-text: rgba(255, 255, 255, 0.3);
+--c-about-meta-icon: rgba(124, 92, 252, 0.65);
+--c-about-body-text: rgba(255, 255, 255, 0.5);
+--c-about-accent-text: #a78bfa;
+--c-about-card-border: rgba(255, 255, 255, 0.07);
+--c-about-card-bg: rgba(255, 255, 255, 0.02);
+--c-about-card-hover-border: rgba(124, 92, 252, 0.35);
+--c-about-card-hover-bg: rgba(124, 92, 252, 0.04);
+--c-about-card-icon-bg: rgba(255, 255, 255, 0.03);
+--c-about-card-icon-border: rgba(255, 255, 255, 0.06);
+--c-about-card-icon-hover-bg: rgba(124, 92, 252, 0.12);
+--c-about-card-icon-stroke: rgba(255, 255, 255, 0.5);
+--c-about-card-title: rgba(255, 255, 255, 0.85);
+--c-about-card-sub: rgba(255, 255, 255, 0.3);
+--c-about-card-eye: rgba(255, 255, 255, 0.18);
+--c-about-card-eye-hover: rgba(167, 139, 250, 0.7);
+--c-about-status-bg: rgba(124, 92, 252, 0.05);
+--c-about-status-border: rgba(124, 92, 252, 0.15);
+--c-about-status-dot: #4ade80;
+--c-about-status-dot-glow: rgba(74, 222, 128, 0.6);
+--c-about-status-text: rgba(255, 255, 255, 0.35);
+--c-about-timeline-border: rgba(255, 255, 255, 0.06);
+--c-about-timeline-accent-border: rgba(124, 92, 252, 0.5);
+--c-about-timeline-bg: rgba(255, 255, 255, 0.015);
+--c-about-divider: rgba(255, 255, 255, 0.05);
+--c-about-exp-date: rgba(167, 139, 250, 0.7);
+--c-about-exp-role: rgba(255, 255, 255, 0.82);
+--c-about-exp-company: rgba(255, 255, 255, 0.28);
+--c-about-exp-desc: rgba(255, 255, 255, 0.42);
+--c-about-snapshot-border: rgba(255, 255, 255, 0.07);
+--c-about-snapshot-bg: rgba(255, 255, 255, 0.015);
+--c-about-snapshot-cell-border: rgba(255, 255, 255, 0.06);
+--c-about-snapshot-cta-top-border: rgba(255, 255, 255, 0.06);
+--c-about-snapshot-hover-bg: rgba(124, 92, 252, 0.04);
+--c-about-snapshot-label: rgba(255, 255, 255, 0.22);
+--c-about-snapshot-value: rgba(255, 255, 255, 0.78);
+--c-about-cta-title-soft: rgba(255, 255, 255, 0.75);
+--c-about-cta-title: rgba(255, 255, 255, 0.8);
+--c-about-cta-body-soft: rgba(255, 255, 255, 0.32);
+--c-about-cta-body: rgba(255, 255, 255, 0.36);
+--c-about-cta-note-bg: rgba(255, 255, 255, 0.012);
+--c-about-cta-link: rgba(167, 139, 250, 0.65);
+--c-about-cta-link-hover: rgba(167, 139, 250, 1);
+
+--c-hero-bg: #05050a;
+--c-hero-dot-fill: #ffffff;
+--c-hero-radial-right: rgba(124, 92, 252, 0.1);
+--c-hero-radial-top: rgba(124, 92, 252, 0.06);
+
+--c-hero-social-text: rgba(255, 255, 255, 0.4);
+--c-hero-social-border: rgba(255, 255, 255, 0.1);
+--c-hero-social-hover-text: #ffffff;
+--c-hero-social-hover-border: rgba(124, 92, 252, 0.5);
+--c-hero-social-hover-bg: rgba(124, 92, 252, 0.08);
+
+--c-hero-stat-value: #ffffff;
+--c-hero-stat-label: rgba(255, 255, 255, 0.25);
+
+
+--c-hero-btn-primary-text: #ffffff;
+--c-hero-btn-primary-bg: #7c5cfc;
+--c-hero-btn-primary-border: #7c5cfc;
+
+--c-hero-btn-secondary-text: rgba(255, 255, 255, 0.55);
+--c-hero-btn-secondary-border: rgba(255, 255, 255, 0.08);
+--c-hero-btn-secondary-bg: rgba(255, 255, 255, 0.03);
+--c-hero-btn-secondary-hover-text: #ffffff;
+--c-hero-btn-secondary-hover-border: rgba(255, 255, 255, 0.2);
+
+--c-hero-floating-shadow: rgba(0, 0, 0, 0.3);
+
+--c-hero-glow-core: rgba(124, 92, 252, 0.16);
+--c-hero-glow-mid: rgba(124, 92, 252, 0.05);
+--c-hero-ring-border: rgba(124, 92, 252, 0.08);
+
+--c-hero-avatar-grad-1: rgba(124, 92, 252, 0.5);
+--c-hero-avatar-grad-2: rgba(124, 92, 252, 0.08);
+--c-hero-avatar-grad-3: rgba(80, 60, 180, 0.15);
+--c-hero-avatar-inner-bg: #08071a;
+--c-hero-avatar-overlay-top: rgba(124, 92, 252, 0.08);
+--c-hero-avatar-overlay-bottom: rgba(8, 7, 26, 0.65);
+
+--c-hero-status-bg: rgba(8, 7, 20, 0.82);
+--c-hero-status-border: rgba(255, 255, 255, 0.07);
+--c-hero-status-shadow: rgba(0, 0, 0, 0.4);
+--c-hero-status-dot: rgb(74, 222, 128);
+--c-hero-status-dot-glow: rgba(74, 222, 128, 0.65);
+--c-hero-status-pulse: rgba(74, 222, 128, 0.6);
+--c-hero-status-text: rgba(255, 255, 255, 0.7);
+
+--c-hero-title: #ffffff;
+--c-hero-subtitle: rgba(255, 255, 255, 0.6);
+--c-hero-accent: #7c5cfc;
+--c-hero-title-dim: rgba(255, 255, 255, 0.2);
+--c-hero-desc: rgba(255, 255, 255, 0.4);
+
+--c-hero-avatar-glow-strong: rgba(124, 92, 252, 0.14);
+--c-hero-avatar-glow-soft: rgba(124, 92, 252, 0.06);
+--c-hero-status-pulse-clear: rgba(74, 222, 128, 0);
+
+--c-hero-views-border: rgba(255, 255, 255, 0.08);
+--c-hero-views-bg: rgba(255, 255, 255, 0.03);
+--c-hero-views-text: rgba(255, 255, 255, 0.4);
+--c-hero-views-skeleton: rgba(255, 255, 255, 0.08);
+
+--c-cert-modal-overlay: rgba(0, 0, 0, 0.4);
+--c-cert-modal-surface: #0f172a;
+--c-cert-modal-close-icon: #111827;
+
+--c-lightbox-overlay: rgba(0, 0, 0, 0.9);
+--c-lightbox-close-bg: rgba(255, 255, 255, 0.1);
+--c-lightbox-close-hover-bg: rgba(255, 255, 255, 0.2);
+--c-lightbox-close-icon: #ffffff;
+
+--c-contact-dot-shadow: rgba(124, 92, 252, 0.8);
+--c-contact-submit-hover-bg: #6a4ce0;
+
+
+
+--c-contact-glow: rgba(124, 92, 252, 0.07);
+--c-contact-eyebrow-text: rgba(255, 255, 255, 0.35);
+--c-contact-eyebrow-border: rgba(255, 255, 255, 0.07);
+--c-contact-eyebrow-bg: rgba(255, 255, 255, 0.025);
+--c-contact-outline: rgba(124, 92, 252, 0.6);
+--c-contact-card-border: rgba(255, 255, 255, 0.06);
+--c-contact-card-bg: rgba(255, 255, 255, 0.02);
+--c-contact-link-hover-border: rgba(124, 92, 252, 0.35);
+--c-contact-link-hover-bg: rgba(124, 92, 252, 0.04);
+--c-contact-icon-bg: rgba(255, 255, 255, 0.03);
+--c-contact-icon-accent: rgba(167, 139, 250, 0.7);
+--c-contact-icon-accent-strong: rgba(167, 139, 250, 1);
+--c-contact-icon-hover-bg: rgba(124, 92, 252, 0.12);
+--c-contact-label: rgba(255, 255, 255, 0.28);
+--c-contact-value: rgba(255, 255, 255, 0.7);
+--c-contact-value-hover: rgba(255, 255, 255, 0.9);
+--c-contact-arrow: rgba(255, 255, 255, 0.18);
+--c-contact-avail-bg: rgba(74, 222, 128, 0.04);
+--c-contact-avail-border: rgba(74, 222, 128, 0.12);
+--c-contact-avail-ping: rgba(74, 222, 128, 0.5);
+--c-contact-avail-dot-shadow: rgba(74, 222, 128, 0.6);
+--c-contact-avail-text: rgba(134, 239, 172, 0.85);
+--c-contact-input-border: rgba(255, 255, 255, 0.08);
+--c-contact-input-bg: rgba(255, 255, 255, 0.03);
+--c-contact-input-text: rgba(255, 255, 255, 0.85);
+--c-contact-placeholder: rgba(255, 255, 255, 0.2);
+--c-contact-focus-border: rgba(124, 92, 252, 0.5);
+--c-contact-focus-bg: rgba(124, 92, 252, 0.04);
+--c-contact-focus-ring: rgba(124, 92, 252, 0.08);
+--c-contact-success-bg: rgba(74, 222, 128, 0.06);
+--c-contact-success-border: rgba(74, 222, 128, 0.2);
+--c-contact-success-text: rgba(134, 239, 172, 0.85);
+--c-contact-error-bg: rgba(248, 113, 113, 0.06);
+--c-contact-error-border: rgba(248, 113, 113, 0.2);
+--c-contact-error-text: rgba(252, 165, 165, 0.85);
+--c-contact-dot-shadow: rgba(124, 92, 252, 0.8);
+--c-contact-submit-hover-bg: #6a4ce0;
+
+--c-footer-glow-line: rgba(124, 92, 252, 0.4);
+--c-footer-bg: #05050a;
+--c-footer-glow-line: rgba(124, 92, 252, 0.4);
+--c-footer-label: rgba(255, 255, 255, 0.2);
+--c-footer-value: rgba(255, 255, 255, 0.55);
+--c-footer-link-hover: rgba(167, 139, 250, 0.85);
+--c-footer-name: rgba(255, 255, 255, 0.75);
+--c-footer-tagline: rgba(255, 255, 255, 0.28);
+--c-footer-cta-label: rgba(255, 255, 255, 0.25);
+--c-footer-field-border: rgba(255, 255, 255, 0.09);
+--c-footer-field-bg: rgba(255, 255, 255, 0.03);
+--c-footer-field-hover-border: rgba(124, 92, 252, 0.3);
+--c-footer-field-hover-bg: rgba(124, 92, 252, 0.04);
+--c-footer-email: rgba(255, 255, 255, 0.3);
+--c-footer-btn-main: rgba(255, 255, 255, 0.92);
+--c-footer-btn-main-hover: var(--c-white);
+--c-footer-btn-outline: rgba(167, 139, 250, 0.9);
+--c-footer-btn-outline-hover: rgba(196, 181, 253, 1);
+--c-footer-divider: rgba(255, 255, 255, 0.04);
+--c-footer-copy: rgba(255, 255, 255, 0.75);
+--c-footer-mobile-divider: rgba(255, 255, 255, 0.05);
+}
+
+.font-unbounded {
+  font-family: "Unbounded", sans-serif;
+}
 @variant dark (&:is(.dark *));
 
 html {

@@ -1,182 +1,319 @@
-import { useState } from 'react';
-import CertificateModal from './CertificateModal';
+import { useState, useEffect } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import CertificateModal from "./CertificateModal";
+import "../styles/about.css";
+
+const ROTATING_WORDS = [
+  "About Me",
+  "System Programmer",
+  "Production Developer",
+  "Full Stack Dev",
+];
+
+const META = [
+  {
+    icon: (
+      <svg
+        className="w-3.5 h-3.5"
+        fill="none"
+        stroke="currentColor"
+        viewBox="0 0 24 24"
+        strokeWidth="1.5"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      >
+        <path d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+        <path d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+      </svg>
+    ),
+    text: "Carmen, Cebu, Philippines",
+  },
+];
+
+const stagger = {
+  hidden: {},
+  visible: { transition: { staggerChildren: 0.09, delayChildren: 0.05 } },
+};
+
+const slideUp = {
+  hidden: { opacity: 0, y: 20 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] },
+  },
+};
+
+const wordAnim = {
+  hidden: { opacity: 0, y: 8 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.4, ease: [0.22, 1, 0.36, 1] },
+  },
+  exit: { opacity: 0, y: -8, transition: { duration: 0.25, ease: "easeIn" } },
+};
 
 const About = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [wordIndex, setWordIndex] = useState(0);
 
-  const coreStrengths = [
-    {
-      icon: (
-        <svg className="w-4 h-4 sm:w-5 sm:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
-        </svg>
-      ),
-      title: 'Front-end Development',
-      description: 'React, JavaScript, jQuery, Responsive UI',
-    },
-    {
-      icon: (
-        <svg className="w-4 h-4 sm:w-5 sm:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4m0 5c0 2.21-3.582 4-8 4s-8-1.79-8-4" />
-        </svg>
-      ),
-      title: 'Backend & Database',
-      description: 'Laravel, PHP, Java, MySQL',
-    },
-    {
-      icon: (
-        <svg className="w-4 h-4 sm:w-5 sm:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z" />
-        </svg>
-      ),
-      title: 'API Development',
-      description: 'REST APIs, Integration',
-    },
-    {
-      icon: (
-        <svg className="w-4 h-4 sm:w-5 sm:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M5 12h14M12 5l7 7-7 7" />
-        </svg>
-      ),
-      title: 'Production Systems',
-      description: 'Maintenance, Deployment',
-    },
-    {
-      icon: (
-        <svg className="w-4 h-4 sm:w-5 sm:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M13 10V3L4 14h7v7l9-11h-7z" />
-        </svg>
-      ),
-      title: 'Performance',
-      description: 'Batch Processing, Optimization',
-    },
-    {
-      icon: (
-        <svg className="w-4 h-4 sm:w-5 sm:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z" />
-        </svg>
-      ),
-      title: 'UI/UX Design',
-      description: 'Interface Redesign, Usability',
-    },
-  ];
+  useEffect(() => {
+    const id = setInterval(() => {
+      setWordIndex((prev) => (prev + 1) % ROTATING_WORDS.length);
+    }, 2400);
+    return () => clearInterval(id);
+  }, []);
 
   return (
     <>
-      <section id="about" className="pt-24 pb-12 sm:pt-28 sm:pb-16 md:pt-32 md:pb-20 px-4 sm:px-6 bg-white dark:bg-slate-900">
-        <div className="max-w-6xl mx-auto">
-          <div className="mb-10 sm:mb-12 md:mb-16 animate-fadeInUp">
-            <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 dark:text-slate-100 mb-2 tracking-tight">
-              About
-            </h2>
-            <p className="text-sm sm:text-base text-gray-600 dark:text-slate-400">
-              Background and Experience
-            </p>
-          </div>
+      <section
+        id="about"
+        className="about-section relative py-28 md:py-36 px-6 md:px-12 overflow-hidden"
+      >
+        <div className="absolute inset-0 pointer-events-none">
+          <div className="absolute inset-0 about-radial-left" />
+          <div className="absolute about-radial-bottom" />
+          <svg
+            className="absolute inset-0 w-full h-full about-dots"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <defs>
+              <pattern
+                id="about-dots"
+                width="28"
+                height="28"
+                patternUnits="userSpaceOnUse"
+              >
+                <circle cx="1" cy="1" r="1" fill="var(--c-about-dot-fill)" />
+              </pattern>
+            </defs>
+            <rect width="100%" height="100%" fill="url(#about-dots)" />
+          </svg>
+        </div>
 
-          <div className="grid md:grid-cols-3 gap-8 sm:gap-10 md:gap-12 mb-12 sm:mb-16 md:mb-20">
-            <div className="md:col-span-2 space-y-6 sm:space-y-8 animate-fadeInUp">
-              <p className="text-sm sm:text-base text-gray-600 dark:text-slate-300 leading-relaxed">
-                I'm a fresh graduate from CTU - Carmen Campus who builds things that solve real problems starting with my own community. Whether it's a water supply monitor for my neighborhood or a POS system for a local store, I care about software that actually gets used
-              </p>
-              <p className="text-sm sm:text-base text-gray-600 dark:text-slate-300 leading-relaxed">
-                At TinkerPro POS I got my first taste of what production really means code that breaks for real users, deadlines that matter, and seniors who push you to think before you ship. That experience changed how I approach every project
-              </p>
-
-              <div className="grid md:grid-cols-2 gap-5 sm:gap-6 mt-8 sm:mt-10">
-                <div className="flex flex-col">
-                  <h3 className="text-sm sm:text-base font-semibold text-gray-900 dark:text-slate-100 mb-3 sm:mb-4 pb-2 border-b border-gray-200 dark:border-slate-700 flex items-center gap-2">
-                    <svg className="w-4 h-4 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-                    </svg>
-                    Certificate of Employment
-                  </h3>
-                  <button
-                    onClick={() => setIsModalOpen(true)}
-                  className="flex-1 w-full group relative overflow-hidden bg-white dark:bg-slate-800 border-2 border-gray-200 dark:border-slate-700 p-4 sm:p-5 md:p-6 text-left hover:border-gray-400 dark:hover:border-slate-500 transition-colors duration-300"
-                  >
-                    <div className="flex items-center justify-between mb-2 sm:mb-3">
-                      <div className="flex items-center gap-2 min-w-0 flex-1">
-                        <div className="w-8 h-8 sm:w-10 sm:h-10 bg-gray-100 dark:bg-slate-700 flex items-center justify-center flex-shrink-0">
-                          <svg className="w-4 h-4 sm:w-5 sm:h-5 text-gray-900 dark:text-slate-100" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-                          </svg>
-                        </div>
-                        <div className="min-w-0">
-                          <div className="text-xs sm:text-sm font-semibold text-gray-900 dark:text-slate-100 truncate">
-                            TinkerPro POS
-                          </div>
-                          <div className="text-xs text-gray-500 dark:text-slate-400">Official Document</div>
-                        </div>
-                      </div>
-                      <svg className="w-4 h-4 sm:w-5 sm:h-5 text-gray-400 group-hover:text-gray-900 dark:group-hover:text-slate-100 transition-colors flex-shrink-0 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
-                      </svg>
-                    </div>
-                    <div className="text-xs text-gray-600 dark:text-slate-300 leading-relaxed">
-                      Click to view certificate details and employment verification
-                    </div>
-                  </button>
-                </div>
-
-                <div className="flex flex-col">
-                  <h3 className="text-sm sm:text-base font-semibold text-gray-900 dark:text-slate-100 mb-3 sm:mb-4 pb-2 border-b border-gray-200 dark:border-slate-700 flex items-center gap-2">
-                    <svg className="w-4 h-4 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 14l9-5-9-5-9 5 9 5z" />
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 14l9-5-9-5-9 5 9 5zm0 0l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z" />
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 14l9-5-9-5-9 5 9 5zm0 0v6" />
-                    </svg>
-                    Education
-                  </h3>
-                  <div className="flex-1 bg-white dark:bg-slate-800 p-4 sm:p-5 border-2 border-gray-200 dark:border-slate-700 hover:border-gray-400 dark:hover:border-slate-500 transition-colors duration-300">
-                    <h4 className="font-semibold text-gray-900 dark:text-slate-100 text-xs sm:text-sm mb-2">
-                      CTU - Carmen Campus
-                    </h4>
-                    <p className="text-gray-700 dark:text-slate-300 text-xs leading-relaxed mb-2">
-                      Bachelor of Industrial Technology Major in Computer Technology
-                    </p>
-                    <div className="flex items-center gap-2 mt-2 sm:mt-3">
-                      <svg className="w-3.5 h-3.5 text-gray-500 dark:text-slate-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
-                      </svg>
-                      <p className="text-gray-500 dark:text-slate-400 text-xs font-medium">2021-2025</p>
-                    </div>
-                  </div>
-                </div>
+        <div className="relative z-10 max-w-6xl mx-auto">
+          <motion.div
+            variants={stagger}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-80px" }}
+            className="flex flex-col gap-12"
+          >
+            <motion.div variants={slideUp} className="flex flex-col gap-4">
+              <div className="about-rotating-label about-mono">
+                <span className="about-rotating-prefix">
+                  <span className="about-dot" />
+                </span>
+                <span className="about-rotating-word-wrap">
+                  <AnimatePresence mode="wait">
+                    <motion.span
+                      key={wordIndex}
+                      className="about-rotating-word"
+                      variants={wordAnim}
+                      initial="hidden"
+                      animate="visible"
+                      exit="exit"
+                    >
+                      {ROTATING_WORDS[wordIndex]}
+                    </motion.span>
+                  </AnimatePresence>
+                </span>
               </div>
-            </div>
 
-            <div className="animate-fadeInUp">
-              <h3 className="text-base sm:text-lg font-semibold text-gray-900 dark:text-slate-100 mb-6 sm:mb-8 pb-3 border-b border-gray-300 dark:border-slate-600">
-                Core Strengths
-              </h3>
+              <h2 className="about-heading">
+                Building Systems That
+                <span className="about-heading-dim">Run in Production.</span>
+              </h2>
 
-              <div className="space-y-1">
-                {coreStrengths.map((strength, index) => (
-                  <div key={index} className="group">
-                    <div className="flex items-center gap-3 py-2.5 sm:py-3 px-2 -mx-2 rounded transition-colors hover:bg-gray-50 dark:hover:bg-slate-800/50">
-                      <div className="text-gray-400 dark:text-slate-500 group-hover:text-gray-900 dark:group-hover:text-slate-100 transition-colors flex-shrink-0">
-                        {strength.icon}
-                      </div>
-                      <div className="flex-1 min-w-0">
-                        <div className="font-medium text-gray-900 dark:text-slate-100 text-xs sm:text-sm">
-                          {strength.title}
-                        </div>
-                        <div className="text-xs text-gray-500 dark:text-slate-500 mt-0.5">
-                          {strength.description}
-                        </div>
-                      </div>
-                    </div>
-                  </div>
+              <div className="about-meta-row">
+                {META.map((m, i) => (
+                  <span key={i} className="about-meta-item about-mono">
+                    <span className="about-meta-icon">{m.icon}</span>
+                    {m.text}
+                  </span>
                 ))}
               </div>
+            </motion.div>
+
+            <div className="grid grid-cols-1 lg:grid-cols-[1fr_360px] gap-10 lg:gap-16">
+              <motion.div variants={stagger} className="flex flex-col gap-8">
+                <motion.div variants={slideUp}>
+                  <p className="about-body">
+                    I'm a solo Full-stack developer building and maintaining
+                    internal production systems used across{" "}
+                    <span className="about-accent">9 factory sites</span> —
+                    request management, helpdesk, ID automation, and a mobile
+                    APK, all running on{" "}
+                    <span className="about-accent">Ubuntu Linux</span> with
+                    Apache, Laravel/PHP, React, and MySQL. Designed, deployed,
+                    and maintained entirely by me.
+                  </p>
+                </motion.div>
+
+                <motion.div
+                  variants={slideUp}
+                  className="grid grid-cols-1 sm:grid-cols-2 gap-3"
+                >
+                  <button
+                    onClick={() => setIsModalOpen(true)}
+                    className="about-card about-card-btn group"
+                  >
+                    <div className="about-card-icon">
+                      <svg
+                        className="w-4 h-4 about-card-icon-svg"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                        strokeWidth="1.5"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                      >
+                        <path d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                      </svg>
+                    </div>
+                    <div className="flex-1 min-w-0">
+                      <p className="about-card-title">
+                        Certificate of Employment
+                      </p>
+                      <p className="about-card-sub about-mono">
+                        TinkerPro POS — View
+                      </p>
+                    </div>
+                    <svg
+                      className="w-4 h-4 about-card-eye"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                      strokeWidth="1.5"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    >
+                      <path d="M15 12a3 3 0 11-6 0 3 3 0 016 0zM2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+                    </svg>
+                  </button>
+
+                  <div className="about-card">
+                    <div className="about-card-icon">
+                      <svg
+                        className="w-4 h-4 about-card-icon-svg"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                        strokeWidth="1.5"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                      >
+                        <path d="M12 14l9-5-9-5-9 5 9 5zm0 0l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0112 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14zm-4 6v-7.5l4-2.222" />
+                      </svg>
+                    </div>
+                    <div className="flex-1 min-w-0">
+                      <p className="about-card-title">CTU — Carmen Campus</p>
+                      <p className="about-card-sub about-mono">
+                        B.IndTech — CompTech · 2021–2025
+                      </p>
+                    </div>
+                  </div>
+                </motion.div>
+
+                <motion.div variants={slideUp} className="about-exp-timeline">
+                  <div className="about-exp-item">
+                    <div className="about-exp-header">
+                      <span className="about-exp-date about-mono">
+                        Mar 2026 — Present
+                      </span>
+                    </div>
+                    <p className="about-exp-role">
+                      Web Developer · Solo Full Stack Developer
+                    </p>
+                    <p className="about-exp-company about-mono">
+                      Sports City International Inc.
+                    </p>
+                    <p className="about-exp-desc">
+                      Building and maintaining internal production systems
+                      across 9 factory sites: request management, helpdesk, ID
+                      automation, cron jobs, SMTP reporting, and Linux server
+                      deployments.
+                    </p>
+                  </div>
+
+                  <div className="about-exp-divider" />
+
+                  <div className="about-exp-item">
+                    <div className="about-exp-header">
+                      <span className="about-exp-date about-mono">
+                        Sept 2025 — Nov 2025
+                      </span>
+                    </div>
+                    <p className="about-exp-role">System Developer</p>
+                    <p className="about-exp-company about-mono">
+                      TinkerPro Technologies · TinkerPro POS
+                    </p>
+                    <p className="about-exp-desc">
+                      Built production POS features: theme settings, settings UI
+                      redesign, bulk product import for 29K+ records, and
+                      REST-style POS module APIs.
+                    </p>
+                  </div>
+                </motion.div>
+              </motion.div>
+
+              <motion.div variants={slideUp} className="flex flex-col gap-3">
+                <div className="about-snapshot-grid">
+                  <div className="about-snapshot-cell">
+                    <span className="about-snapshot-label about-mono">
+                      Base
+                    </span>
+                    <span className="about-snapshot-value">
+                      Carmen, Cebu, PH
+                    </span>
+                  </div>
+                  <div className="about-snapshot-cell">
+                    <span className="about-snapshot-label about-mono">
+                      Timezone
+                    </span>
+                    <span className="about-snapshot-value">UTC +8</span>
+                  </div>
+                  <div className="about-snapshot-cell">
+                    <span className="about-snapshot-label about-mono">
+                      Current Role
+                    </span>
+                    <span className="about-snapshot-value">
+                      Solo Full Stack Dev
+                    </span>
+                  </div>
+                  <div className="about-snapshot-cell">
+                    <span className="about-snapshot-label about-mono">
+                      Work Mode
+                    </span>
+                    <span className="about-snapshot-value">
+                      Production Ownership
+                    </span>
+                  </div>
+                  <div className="about-snapshot-cell about-snapshot-cta">
+                    <p className="about-cta-title">Have something to build?</p>
+                    <p className="about-cta-body">
+                      I'm open to full-time roles, freelance work, and practical
+                      problems that need clean systems.
+                    </p>
+                     <a href="#contact" className="about-cta-link about-mono mx-auto">
+    GET IN TOUCH
+    <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M5 12h14M12 5l7 7-7 7" />
+    </svg>
+  </a>
+                  </div>
+                </div>
+              </motion.div>
             </div>
-          </div>
+          </motion.div>
         </div>
       </section>
 
-      <CertificateModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
+      <CertificateModal
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+      />
     </>
   );
 };

@@ -1,25 +1,29 @@
-import { useScrollPosition } from '../hooks/useScrollPosition';
+import { useScrollPosition } from "../hooks/useScrollPosition";
+import "../styles/scrollToTop.css";
 
 const ScrollToTop = () => {
   const { isVisible } = useScrollPosition();
 
   const scrollToTop = () => {
-    window.scrollTo({
-      top: 0,
-      behavior: 'smooth',
-    });
+    window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
   return (
     <button
       onClick={scrollToTop}
-      className={`fixed bottom-8 right-8 w-12 h-12 bg-white dark:bg-slate-800 text-gray-900 dark:text-slate-100 border-2 border-gray-200 dark:border-slate-700 hover:border-gray-900 dark:hover:border-slate-400 flex items-center justify-center transition-all z-50 shadow-lg ${
-        isVisible ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'
-      }`}
+      className={`stt-btn${isVisible ? " stt-visible" : ""}`}
       aria-label="Scroll to top"
     >
-      <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 10l7-7m0 0l7 7m-7-7v18" />
+      <svg
+        className="stt-icon"
+        aria-hidden="true"
+        width="15"
+        height="15"
+        viewBox="0 0 20.79 20.79"
+        fill="currentColor"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path d="M0 9.083L0 11.708L15.75 11.708L8.531 18.926L10.395 20.79L20.79 10.395L10.395 0L8.531 1.864L15.75 9.083Z" />
       </svg>
     </button>
   );

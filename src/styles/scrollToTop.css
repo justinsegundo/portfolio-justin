@@ -1,0 +1,64 @@
+.stt-btn {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  z-index: 50;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 1px solid var(--c-stt-border);
+  background: var(--c-stt-bg);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  color: var(--c-white);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(10px);
+  transition:
+    opacity 0.3s ease,
+    transform 0.3s ease,
+    background 0.25s ease,
+    border-color 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+.stt-btn.stt-visible {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0);
+}
+.stt-btn:hover {
+  background: var(--c-stt-bg-hover);
+  border-color: var(--c-stt-border-hover);
+  box-shadow: var(--fx-stt-glow);
+}
+
+.stt-icon {
+  display: block;
+  flex-shrink: 0;
+  transform: rotate(-90deg) translateX(1px);
+  transition: transform 0.25s ease;
+}
+.stt-btn:hover .stt-icon {
+  transform: rotate(-90deg) translateX(3px);
+}
+@media (max-width: 640px) {
+  .stt-btn {
+    bottom: 1.25rem;
+    right: 1.25rem;
+    width: 40px;
+    height: 40px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .stt-btn,
+  .stt-arrows,
+  .stt-arrow {
+    transition: none;
+  }
+}
