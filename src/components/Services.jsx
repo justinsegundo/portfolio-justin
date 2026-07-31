@@ -104,56 +104,75 @@ const SERVICES = [
 
 const TOTAL = SERVICES.length;
 
-const CardFace = ({ service }) => (
-  <>
-    <div
-      className={`svc-face svc-front ${service.image ? "svc-front--image" : ""}`}
-    >
-      {service.image ? (
-        <img
-          src={service.image}
-          alt={service.title}
-          className="svc-front-image"
-        />
-      ) : (
-        <div className="svc-front-panel" />
-      )}
-      <div className="svc-front-overlay" />
-      <div className="svc-front-noise" />
-      <div className="svc-front-top">
-        <div className="svc-category-badge">
-          <span className="svc-badge-dot" />
-          <span className="svc-mono">{service.category}</span>
+const CardFace = ({ service }) => {
+  const [failedImageSrc, setFailedImageSrc] = useState(null);
+  const imageSrc = typeof service.image === "string" ? service.image.trim() : "";
+  const hasValidImage = Boolean(imageSrc) && failedImageSrc !== imageSrc;
+
+  return (
+    <>
+      <div
+        className={`svc-face svc-front ${hasValidImage ? "svc-front--image" : ""
+          }`}
+      >
+        {hasValidImage ? (
+          <img
+            src={imageSrc}
+            alt={service.title}
+            className="svc-front-image"
+            onError={() => setFailedImageSrc(imageSrc)}
+          />
+        ) : (
+          <>
+            <div className="svc-front-panel" />
+            <div
+              className="svc-front-fallback"
+              role="img"
+              aria-label={`Image coming soon for ${service.title}`}
+            >
+              <span className="svc-mono" aria-hidden="true">
+                Coming Soon
+              </span>
+            </div>
+          </>
+        )}
+        <div className="svc-front-overlay" />
+        <div className="svc-front-noise" />
+        <div className="svc-front-top">
+          <div className="svc-category-badge">
+            <span className="svc-badge-dot" />
+            <span className="svc-mono">{service.category}</span>
+          </div>
+        </div>
+        <div className="svc-front-bottom">
+          <p className="svc-front-title">{service.title}</p>
+          <p className="svc-front-sub">{service.subtitle}</p>
         </div>
       </div>
-      <div className="svc-front-bottom">
-        <p className="svc-front-title">{service.title}</p>
-        <p className="svc-front-sub">{service.subtitle}</p>
-      </div>
-    </div>
 
-    <div className="svc-face svc-back">
-      <div className="svc-back-noise" />
-      <div className="svc-back-header">
-        <span className="svc-mono svc-back-cat">{service.category}</span>
-        <p className="svc-back-title">{service.title}</p>
-        <div className="svc-back-rule" />
+      <div className="svc-face svc-back">
+        <div className="svc-back-noise" />
+        <div className="svc-back-header">
+          <span className="svc-mono svc-back-cat">{service.category}</span>
+          <p className="svc-back-title">{service.title}</p>
+          <div className="svc-back-rule" />
+        </div>
+        <ul className="svc-points">
+          {service.points.map((pt, i) => (
+            <li key={i} className="svc-point">
+              <span className="svc-point-pip" />
+              <span>{pt}</span>
+            </li>
+          ))}
+        </ul>
+        <div className="svc-cta">
+          <span className="svc-cta-pulse" />
+          <span className="svc-mono">Available for freelance work</span>
+        </div>
       </div>
-      <ul className="svc-points">
-        {service.points.map((pt, i) => (
-          <li key={i} className="svc-point">
-            <span className="svc-point-pip" />
-            <span>{pt}</span>
-          </li>
-        ))}
-      </ul>
-      <div className="svc-cta">
-        <span className="svc-cta-pulse" />
-        <span className="svc-mono">Available for freelance work</span>
-      </div>
-    </div>
-  </>
-);
+    </>
+  );
+};
 
 const CarouselCard = ({
   service,
@@ -345,7 +364,7 @@ const Services = () => {
             <span className="svc-cursor-top svc-mono">CLICK</span>
             <span className="svc-cursor-bot svc-mono">{
               flippedIndex === hoveredIndex ? "TO CLOSE" : "TO FLIP"
-              }</span>
+            }</span>
           </span>
         </motion.div>
 

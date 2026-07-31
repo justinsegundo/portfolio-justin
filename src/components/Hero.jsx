@@ -50,7 +50,7 @@ const SOCIALS = [
 ];
 
 const STATS = [
-  { value: "8", label: "Internal Systems", sub: "In Production" },
+  { value: "12", label: "Internal Systems", sub: "In Production" },
   { value: "29K+", label: "Records", sub: "Processed" },
   { value: "Solo", label: "Full Stack", sub: "Developer" },
   { value: "Live", label: "Real Users", sub: "Every Day" },
