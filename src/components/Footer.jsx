@@ -30,13 +30,7 @@ const Footer = () => (
 
       <div className="ft-main">
         <div className="ft-identity">
-          <div className="ft-logo">
-            <img
-              src="/images/logo-justin.png"
-              alt="Justin Ian Segundo logo"
-              className="ft-logo-img"
-            />
-          </div>
+       
           <div className="ft-identity-text">
             <p className="ft-name">Justin Ian Segundo</p>
             <p className="ft-tagline">
