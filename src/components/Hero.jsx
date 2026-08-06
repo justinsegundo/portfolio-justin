@@ -402,7 +402,7 @@ const visualEntrance = reduced
                   transition={{ duration: reduced ? 0 : 0.55, delay: reduced ? 0 : 0.9, ease: [0.22, 1, 0.36, 1] }}
                 >
                   <span className="hero-status-dot status-pulse" />
-                  <p className="hero-status-text">Available for freelance & full time</p>
+                  <p className="hero-status-text">Available for freelance & part-time</p>
                 </motion.div>
               </motion.div>
             </motion.div>
