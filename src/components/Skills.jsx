@@ -154,7 +154,6 @@ const GROUPS = [
       { name: "Git", img: `${CDN}/git/git-original.svg` },
       { name: "VS Code", img: `${CDN}/vscode/vscode-original.svg` },
       { name: "Postman", img: `${CDN}/postman/postman-original.svg` },
-      { name: "FileZilla", img: `${CDN}/filezilla/filezilla-original.svg` },
       { name: "Firebase", img: `${CDN}/firebase/firebase-original.svg` },
     ],
   },

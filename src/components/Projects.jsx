@@ -41,6 +41,62 @@ const cardReveal = {
 const PROJECTS = [
   {
     id: 1,
+    title: "PowerWatch PH",
+    company: "Personal",
+    category: "Full Stack",
+    badge: "Laravel · Next.js",
+    description:
+      "A full-stack Philippine electricity data platform designed to turn fragmented utility and service-area information into structured, source-backed data. Built with a Laravel REST API, PostgreSQL, and a Next.js/React frontend with a strong focus on data integrity, provenance, and maintainable architecture.",
+    image: "/images/powerwatch.png",
+    tags: [
+      "Laravel 13",
+      "Next.js",
+      "React",
+      "TypeScript",
+      "PostgreSQL",
+      "REST API",
+      "Pest",
+    ],
+    hasImage: true,
+  },
+    {
+    id: 2,
+    title: "Enterprise IT Device Agent",
+    company: "Sports City International Inc.",
+    category: "Automation",
+    badge: "C#/.NET · Windows Desktop",
+    description:
+      "A Windows desktop application developed for internal IT support workflows, integrating device information and employee identity with a Laravel-based internal platform. Built to streamline support operations while keeping sensitive enterprise data and internal system details protected.",
+    tags: [
+      "C#",
+      ".NET",
+      "WPF",
+      "Laravel",
+      "REST API",
+      "Windows",
+    ],
+    hasImage: false,
+    icon: (
+      <svg
+        className="w-5 h-5"
+        fill="none"
+        stroke="currentColor"
+        viewBox="0 0 24 24"
+        strokeWidth="1.5"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      >
+        <rect x="3" y="4" width="18" height="13" rx="2" />
+        <path d="M8 21h8M12 17v4" />
+      </svg>
+    ),
+    stats: [
+      { value: "WPF", label: "Desktop" },
+      { value: "API", label: "Integrated" },
+    ],
+  },
+  {
+    id: 3,
     title: "IT Staff Mobile APK",
     company: "Sports City International Inc.",
     category: "Mobile",
@@ -52,7 +108,7 @@ const PROJECTS = [
     hasImage: true,
   },
   {
-    id: 2,
+    id: 4,
     title: "IT Helpdesk Platform",
     company: "Sports City International Inc.",
     category: "Production",
@@ -64,7 +120,7 @@ const PROJECTS = [
     hasImage: true,
   },
   {
-    id: 3,
+    id: 5,
     title: "ID Management & Request Automation",
     company: "Sports City International Inc.",
     category: "Automation",
@@ -76,7 +132,7 @@ const PROJECTS = [
     hasImage: true,
   },
   {
-    id: 4,
+    id: 6,
     title: "Request Management System",
     company: "Sports City International Inc.",
     category: "Full Stack",
@@ -88,7 +144,7 @@ const PROJECTS = [
     hasImage: true,
   },
   {
-    id: 5,
+    id: 7,
     title: "System Monitoring & Maintenance",
     company: "Sports City International Inc.",
     category: "Backend",
@@ -117,7 +173,7 @@ const PROJECTS = [
   },
  
    {
-    id: 6,
+    id: 8,
     title: "DevConnect",
     company: "Personal",
     category: "Personal",
@@ -137,7 +193,7 @@ const PROJECTS = [
     github: "https://github.com/justinsegundo/devconnect",
   },
   {
-    id: 7,
+    id: 9,
     title: "Tide Water Supply System",
     company: "Personal",
     category: "Personal",
@@ -151,7 +207,7 @@ const PROJECTS = [
   },
  
   {
-    id: 8,
+    id: 10,
     title: "Protocol Platform",
     company: "Personal",
     category: "Personal",
@@ -171,7 +227,7 @@ const PROJECTS = [
     github: "https://github.com/justinsegundo/protocol-platform",
   },
   {
-    id: 9,
+    id: 11,
     title: "Sari-Sari POS System",
     company: "Personal",
     category: "Personal",
@@ -184,7 +240,7 @@ const PROJECTS = [
     github: "https://github.com/justinsegundo/sari-sari-pos-system",
   },
    {
-    id: 10,
+    id: 12,
     title: "Theme Settings System",
     company: "TinkerPro POS",
     category: "Production",
@@ -196,7 +252,7 @@ const PROJECTS = [
     hasImage: true,
   },
   {
-    id: 11,
+    id: 13,
     title: "Settings UI Redesign",
     company: "TinkerPro POS",
     category: "Full Stack",
@@ -208,7 +264,7 @@ const PROJECTS = [
     hasImage: true,
   },
   {
-    id: 12,
+    id: 14,
     title: "Bulk Product Import System",
     company: "TinkerPro POS",
     category: "Automation",
@@ -236,7 +292,7 @@ const PROJECTS = [
     ],
   },
   {
-    id: 13,
+    id: 15,
     title: "POS Module REST APIs",
     company: "TinkerPro POS",
     category: "Backend",
@@ -490,7 +546,7 @@ const Projects = () => {
             <span className="projects-heading-outline"> PROJECTS</span>
           </h2>
             <p className="projects-subtext">
-              Production and personal builds across full-stack web, backend systems, automation, and mobile.
+               Production and personal builds across full-stack web, desktop applications, backend systems, automation, and mobile.
             </p>
           </motion.div>
 
